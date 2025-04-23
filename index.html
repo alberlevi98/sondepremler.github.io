@@ -323,8 +323,8 @@
                 return;
             }
             
-            // Büyüklüğe göre sırala (büyükten küçüğe)
-            earthquakes.features.sort((a, b) => b.properties.mag - a.properties.mag);
+            earthquakes.features.sort((a, b) => b.properties.time - a.properties.time);
+
             
             earthquakes.features.forEach(quake => {
                 const { mag, place, time, depth, url } = quake.properties;
