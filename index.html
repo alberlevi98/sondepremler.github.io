@@ -323,7 +323,7 @@
                 return;
             }
             
-            earthquakes.features.sort((b, a) => b.properties.time - a.properties.time);
+            earthquakes.features.sort((a, b) => b.properties.time - a.properties.time);
 
             
             earthquakes.features.forEach(quake => {
