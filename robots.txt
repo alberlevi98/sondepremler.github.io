@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+Sitemap: https://sondepremler.site/sitemap.xml
+
+Crawl-delay: 10

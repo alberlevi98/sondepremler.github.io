@@ -4,349 +4,818 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Başlık (Google aramasında mavi görünen başlık) -->
-<title> Son Depremler - Türkiye Canlı Harita </title>
+    <!-- ===== SEO: Başlık & Açıklama ===== -->
+    <title>Son Depremler - Türkiye Canlı Deprem Haritası | Anlık Deprem Takibi</title>
+    <meta name="description" content="Türkiye'deki son depremleri canlı harita üzerinde anlık takip edin. AFAD deprem verileri, büyüklük, derinlik, konum bilgileri ve deprem listesi. Güncel deprem bilgileri burada.">
+    <meta name="keywords" content="son depremler, deprem, türkiye deprem, canlı deprem haritası, anlık deprem, deprem takip, AFAD depremler, bugün deprem oldu mu, son dakika deprem, deprem büyüklüğü, deprem nerede oldu, kandilli deprem">
 
-<!-- Açıklama (Google'da başlığın altındaki gri metin) -->
-<meta name="description" content="Türkiye'deki son depremleri canlı harita üzerinde takip edin. Anlık deprem verileri, büyüklük, derinlik ve konum bilgileri.">
+    <!-- ===== SEO: Canonical URL ===== -->
+    <link rel="canonical" href="https://sondepremler.site/">
 
+    <!-- ===== SEO: Robots ===== -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-770EYYY3DZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- ===== SEO: Dil & Bölge ===== -->
+    <meta name="language" content="Turkish">
+    <meta name="geo.region" content="TR">
+    <meta name="geo.placename" content="Türkiye">
+    <link rel="alternate" hreflang="tr" href="https://sondepremler.site/">
+    <link rel="alternate" hreflang="x-default" href="https://sondepremler.site/">
 
-  gtag('config', 'G-770EYYY3DZ');
-</script>
+    <!-- ===== SEO: Open Graph (Facebook, LinkedIn, WhatsApp) ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Son Depremler - Türkiye Canlı Deprem Haritası">
+    <meta property="og:description" content="Türkiye'deki son depremleri canlı harita üzerinde anlık takip edin. Büyüklük, derinlik ve konum bilgileriyle güncel deprem verileri.">
+    <meta property="og:url" content="https://sondepremler.site/">
+    <meta property="og:site_name" content="Son Depremler Türkiye">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:image" content="https://sondepremler.site/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Türkiye son depremler canlı harita">
+
+    <!-- ===== SEO: Twitter Card ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Son Depremler - Türkiye Canlı Deprem Haritası">
+    <meta name="twitter:description" content="Türkiye'deki son depremleri canlı harita üzerinde anlık takip edin.">
+    <meta name="twitter:image" content="https://sondepremler.site/og-image.png">
+    <meta name="twitter:image:alt" content="Türkiye son depremler canlı harita">
+
+    <!-- ===== SEO: Structured Data - WebSite ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Son Depremler Türkiye",
+        "url": "https://sondepremler.site/",
+        "description": "Türkiye'deki son depremleri canlı harita üzerinde anlık takip edin.",
+        "inLanguage": "tr",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Son Depremler Türkiye",
+            "url": "https://sondepremler.site/"
+        }
+    }
+    </script>
+
+    <!-- ===== SEO: Structured Data - WebApplication ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Son Depremler - Türkiye Canlı Deprem Haritası",
+        "url": "https://sondepremler.site/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web",
+        "description": "Türkiye'deki son depremleri canlı harita üzerinde anlık olarak takip edebileceğiniz uygulama.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "TRY"
+        },
+        "inLanguage": "tr",
+        "browserRequirements": "Requires JavaScript"
+    }
+    </script>
+
+    <!-- ===== SEO: Structured Data - FAQPage ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Bugün Türkiye'de deprem oldu mu?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Türkiye'deki güncel deprem verilerini bu sayfadaki canlı harita ve liste üzerinden anlık olarak takip edebilirsiniz. Veriler otomatik olarak güncellenmektedir."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Deprem verileri nereden alınmaktadır?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Deprem verileri AFAD (Afet ve Acil Durum Yönetimi Başkanlığı) kaynaklı API üzerinden anlık olarak çekilmektedir."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Deprem büyüklüğü ne anlama gelir?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Deprem büyüklüğü (magnitüd), depremin enerjisini ölçen bir değerdir. 0-2 arası hafif, 2-4 arası orta, 4 ve üzeri kuvvetli depremler olarak sınıflandırılır."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Haritada depremler nasıl gösteriliyor?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Depremler haritada renkli dairelerle gösterilir. Yeşil hafif, sarı orta, turuncu kuvvetli ve kırmızı çok kuvvetli depremleri temsil eder. Dairenin büyüklüğü deprem şiddetiyle orantılıdır."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- ===== SEO: Structured Data - BreadcrumbList ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Ana Sayfa",
+                "item": "https://sondepremler.site/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Son Depremler",
+                "item": "https://sondepremler.site/#son-depremler"
+            }
+        ]
+    }
+    </script>
+
+    <!-- ===== Performans: Preconnect ===== -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
+    <link rel="preconnect" href="https://hasanadiguzel.com.tr" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+    <!-- ===== Favicon ===== -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
+    <meta name="theme-color" content="#1a252f">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-770EYYY3DZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-770EYYY3DZ');
+    </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css">
+
     <style>
+        *,*::before,*::after{box-sizing:border-box}
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #f0f2f5;
             color: #333;
+            line-height: 1.6;
         }
-        
-        header {
-            background-color: #2c3e50;
+
+        /* Erişilebilirlik: Ekran okuyucu */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #2c3e50;
             color: white;
-            padding: 20px;
+            padding: 8px 16px;
+            z-index: 10000;
+            font-size: 14px;
+            transition: top 0.2s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 50%, #34495e 100%);
+            color: white;
+            padding: 24px 20px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+            position: relative;
         }
-        
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #e74c3c, #f39c12, #27ae60);
+        }
+
         h1 {
-            margin: 0;
-            font-size: 2em;
+            margin: 0 0 6px 0;
+            font-size: 1.9em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
-        
+
+        header p {
+            margin: 0;
+            font-size: 0.95em;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 12px auto 0;
+            padding: 0 20px;
+            font-size: 0.85em;
+            color: #7f8c8d;
+        }
+
+        .breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Container */
         .container {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 16px auto 20px;
             padding: 0 20px;
         }
-        
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            flex: 1;
+            min-width: 140px;
+            background: white;
+            border-radius: 8px;
+            padding: 14px 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .stat-card .stat-value {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #2c3e50;
+            display: block;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.8em;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        select, button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        select {
+            flex-grow: 1;
+            min-width: 200px;
+            appearance: auto;
+        }
+
+        select:focus, button:focus {
+            outline: 2px solid #2980b9;
+            outline-offset: 2px;
+        }
+
+        button {
+            background-color: #27ae60;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background-color: #2ecc71;
+            transform: translateY(-1px);
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 0 0 16px;
+            justify-content: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.82em;
+            color: #555;
+        }
+
+        .legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.15);
+        }
+
+        /* Dashboard */
         .dashboard {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
         }
-        
+
         .map-container {
             flex: 2;
             min-width: 300px;
             height: 500px;
             background-color: white;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             overflow: hidden;
         }
-        
+
         #earthquakeMap {
             height: 100%;
             width: 100%;
         }
-        
+
         .earthquake-list {
             flex: 1;
             min-width: 300px;
             background-color: white;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             padding: 15px;
             max-height: 500px;
             overflow-y: auto;
         }
-        
+
+        .earthquake-list h2 {
+            margin: 0 0 12px 0;
+            font-size: 1.15em;
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 8px;
+        }
+
         .earthquake-item {
             padding: 10px;
             border-bottom: 1px solid #eee;
             cursor: pointer;
             transition: background-color 0.2s;
+            border-radius: 4px;
         }
-        
+
         .earthquake-item:hover {
-            background-color: #f9f9f9;
+            background-color: #f8f9fa;
         }
-        
+
         .earthquake-item h3 {
-            margin: 0 0 5px 0;
+            margin: 0 0 4px 0;
             color: #2c3e50;
+            font-size: 0.95em;
         }
-        
+
+        .earthquake-item p {
+            margin: 2px 0;
+            font-size: 0.85em;
+            color: #666;
+        }
+
         .magnitude {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
-            text-align: center;
-            line-height: 24px;
             color: white;
             font-weight: bold;
+            font-size: 0.8em;
             margin-right: 10px;
+            flex-shrink: 0;
         }
-        
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        select, button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            background-color: #3498db;
-            color: white;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        select {
-            flex-grow: 1;
-            min-width: 200px;
-        }
-        
-        button {
-            background-color: #27ae60;
-        }
-        
-        button:hover {
-            background-color: #2ecc71;
-        }
-        
+
         .loading {
             text-align: center;
             padding: 20px;
             font-style: italic;
             color: #7f8c8d;
         }
-        
+
         .error {
             color: #e74c3c;
             padding: 20px;
             text-align: center;
         }
-        
+
+        /* SEO İçerik Bölümleri */
+        .seo-content {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .info-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            padding: 28px 32px;
+            margin-bottom: 20px;
+        }
+
+        .info-section h2 {
+            color: #2c3e50;
+            font-size: 1.35em;
+            margin: 0 0 14px 0;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 8px;
+        }
+
+        .info-section h3 {
+            color: #34495e;
+            font-size: 1.05em;
+            margin: 18px 0 8px 0;
+        }
+
+        .info-section p {
+            color: #555;
+            line-height: 1.7;
+            margin: 0 0 12px 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ecf0f1;
+            padding: 14px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #2c3e50;
+            padding: 4px 0;
+            font-size: 1em;
+        }
+
+        .faq-item summary:hover {
+            color: #3498db;
+        }
+
+        .faq-item p {
+            margin-top: 8px;
+        }
+
+        /* Footer */
         footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
             text-align: center;
-            padding: 20px;
+            padding: 28px 20px;
             margin-top: 30px;
-            color: #7f8c8d;
             font-size: 0.9em;
         }
-        
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer p {
+            margin: 4px 0;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .dashboard {
-                flex-direction: column;
-            }
-            
-            .map-container, .earthquake-list {
-                width: 100%;
-            }
+            h1 { font-size: 1.4em; }
+            .dashboard { flex-direction: column; }
+            .map-container, .earthquake-list { width: 100%; }
+            .map-container { height: 380px; }
+            .stat-card { min-width: 100px; }
+            .info-section { padding: 20px; }
+        }
+
+        @media print {
+            header, .controls, footer, .map-container { display: none; }
+            .earthquake-list { max-height: none; box-shadow: none; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Son Depremler - Türkiye</h1>
+    <!-- Erişilebilirlik: Ana içeriğe atla -->
+    <a class="skip-link" href="#son-depremler">Ana içeriğe atla</a>
+
+    <!-- ===== HEADER ===== -->
+    <header role="banner">
+        <h1>Son Depremler - Türkiye Canlı Deprem Haritası</h1>
+        <p>Türkiye ve çevresindeki depremleri anlık olarak takip edin</p>
     </header>
-    
-    <div class="container">
-        <div class="controls">
-            <select id="timeRange">
-                <option value="1">Son 1 Saat</option>
-                <option value="24" selected>Son 24 Saat</option>
-                <option value="168">Son 1 Hafta</option>
-                <option value="720">Son 1 Ay</option>
-            </select>
-            
-            <select id="minMagnitude">
-                <option value="0">Tüm Depremler</option>
-                <option value="1">M1.0+</option>
-                <option value="2">M2.0+</option>
-                <option value="3">M3.0+</option>
-                <option value="4">M4.0+</option>
-            </select>
-            
-            <button id="refreshBtn">Verileri Yenile</button>
-        </div>
-        
-        <div class="dashboard">
-            <div class="map-container">
-                <div id="earthquakeMap"></div>
+
+    <!-- ===== BREADCRUMB ===== -->
+    <nav class="breadcrumb" aria-label="Sayfa yolu">
+        <a href="/">Ana Sayfa</a> &rsaquo; <strong>Son Depremler</strong>
+    </nav>
+
+    <!-- ===== MAIN ===== -->
+    <main id="son-depremler">
+        <div class="container">
+
+            <!-- İstatistik Kartları -->
+            <div class="stats-bar" role="region" aria-label="Deprem istatistikleri">
+                <div class="stat-card">
+                    <span class="stat-value" id="totalCount">-</span>
+                    <span class="stat-label">Toplam Deprem</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="maxMag">-</span>
+                    <span class="stat-label">En Büyük (M)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="avgDepth">-</span>
+                    <span class="stat-label">Ort. Derinlik (km)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="last24hCount">-</span>
+                    <span class="stat-label">Son 24 Saat</span>
+                </div>
             </div>
-            
-            <div class="earthquake-list" id="earthquakeList">
-                <div class="loading">Deprem verileri yükleniyor...</div>
+
+            <!-- Kontroller -->
+            <div class="controls" role="search" aria-label="Deprem filtreleme">
+                <label for="timeRange" class="sr-only">Zaman aralığı seçin</label>
+                <select id="timeRange" aria-label="Zaman aralığı">
+                    <option value="1">Son 1 Saat</option>
+                    <option value="24" selected>Son 24 Saat</option>
+                    <option value="168">Son 1 Hafta</option>
+                    <option value="720">Son 1 Ay</option>
+                </select>
+
+                <label for="minMagnitude" class="sr-only">Minimum büyüklük seçin</label>
+                <select id="minMagnitude" aria-label="Minimum büyüklük">
+                    <option value="0">Tüm Depremler</option>
+                    <option value="1">M1.0+</option>
+                    <option value="2">M2.0+</option>
+                    <option value="3">M3.0+</option>
+                    <option value="4">M4.0+</option>
+                </select>
+
+                <button id="refreshBtn" aria-label="Deprem verilerini yenile">&#x21bb; Verileri Yenile</button>
             </div>
+
+            <!-- Lejant -->
+            <div class="legend" role="img" aria-label="Deprem büyüklük renk skalası">
+                <div class="legend-item"><span class="legend-dot" style="background:#4CAF50"></span> &lt;1.0 Çok Hafif</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#8BC34A"></span> 1.0-2.0 Hafif</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#FFEB3B"></span> 2.0-3.0 Orta</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#FF9800"></span> 3.0-4.0 Kuvvetli</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#F44336"></span> 4.0+ Çok Kuvvetli</div>
+            </div>
+
+            <!-- Dashboard: Harita + Liste -->
+            <section class="dashboard" aria-label="Deprem haritası ve listesi">
+                <div class="map-container" role="application" aria-label="Türkiye deprem haritası">
+                    <div id="earthquakeMap"></div>
+                </div>
+
+                <div class="earthquake-list" id="earthquakeList" role="feed" aria-label="Son deprem listesi" aria-live="polite">
+                    <h2>Son Depremler Listesi</h2>
+                    <div class="loading" aria-busy="true">Deprem verileri yükleniyor...</div>
+                </div>
+            </section>
         </div>
-    </div>
-    
-    <footer>
-        <p>Son güncelleme: <span id="lastUpdated">-</span></p>
+
+        <!-- ===== SEO İÇERİK ===== -->
+        <div class="seo-content">
+            <section class="info-section">
+                <h2>Türkiye Deprem Haritası Hakkında</h2>
+                <p>Bu sayfa, Türkiye ve yakın çevresinde meydana gelen son depremleri anlık olarak canlı harita üzerinde göstermektedir. Deprem verileri AFAD (Afet ve Acil Durum Yönetimi Başkanlığı) kaynaklı API'den otomatik olarak çekilmekte ve güncellenebilmektedir.</p>
+
+                <h3>Deprem Verileri Nasıl Okunur?</h3>
+                <p>Haritadaki her bir işaretçi bir depremi temsil eder. İşaretçinin rengi ve büyüklüğü, depremin magnitüdüne (büyüklüğüne) göre değişir. Yeşil tonlar hafif depremleri, sarı orta şiddetteki depremleri, turuncu ve kırmızı ise kuvvetli depremleri gösterir. İşaretçilere tıklayarak deprem detaylarını — büyüklük, derinlik, konum ve zaman bilgilerini — görüntüleyebilirsiniz.</p>
+
+                <h3>Deprem Büyüklüğü (Magnitüd) Nedir?</h3>
+                <p>Deprem büyüklüğü, bir depremin serbest bıraktığı enerji miktarını ölçen sayısal bir değerdir. Richter ölçeğinde her bir tam sayı artışı, yaklaşık 31,6 kat daha fazla enerji anlamına gelir. 2.0 altındaki depremler genellikle hissedilmezken, 4.0 ve üzeri depremler geniş alanlarda hissedilebilir ve hasar verebilir.</p>
+            </section>
+
+            <!-- SSS -->
+            <section class="info-section" id="sss">
+                <h2>Sıkça Sorulan Sorular (SSS)</h2>
+
+                <details class="faq-item">
+                    <summary>Bugün Türkiye'de deprem oldu mu?</summary>
+                    <p>Türkiye'deki güncel deprem verilerini yukarıdaki canlı harita ve deprem listesi üzerinden anlık olarak takip edebilirsiniz. Zaman filtrelerini kullanarak son 1 saat, 24 saat, 1 hafta veya 1 aylık verileri görebilirsiniz.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Deprem verileri nereden alınmaktadır?</summary>
+                    <p>Deprem verileri AFAD (Afet ve Acil Durum Yönetimi Başkanlığı) kaynaklı API üzerinden anlık olarak çekilmektedir. Veriler düzenli aralıklarla güncellenir.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Hangi depremleri görebilirim?</summary>
+                    <p>Büyüklük filtresini kullanarak tüm depremlerden sadece belirli büyüklükteki (M1.0+, M2.0+, M3.0+, M4.0+) depremlere kadar filtreleme yapabilirsiniz. Haritada Türkiye ve yakın çevresindeki tüm depremler gösterilir.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Deprem büyüklüğü renkleri ne anlama gelir?</summary>
+                    <p>Yeşil: Çok hafif depremler (M &lt; 1.0), Açık yeşil: Hafif depremler (M 1.0-2.0), Sarı: Orta şiddetli depremler (M 2.0-3.0), Turuncu: Kuvvetli depremler (M 3.0-4.0), Kırmızı: Çok kuvvetli depremler (M 4.0+).</p>
+                </details>
+            </section>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer role="contentinfo">
+        <p>Son güncelleme: <time id="lastUpdated" datetime="">-</time></p>
+        <p>Veri kaynağı: AFAD - Afet ve Acil Durum Yönetimi Başkanlığı</p>
+        <p>&copy; <span id="currentYear">2026</span> Son Depremler Türkiye | Tüm hakları saklıdır.</p>
     </footer>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
     <script>
-        // Haritayı Türkiye'ye odakla
-        const map = L.map('earthquakeMap').setView([39, 35], 6);
-        
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const map = L.map('earthquakeMap', {
+            center: [39, 35],
+            zoom: 6,
+            zoomControl: true,
+            attributionControl: true
+        });
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> katkıda bulunanlar'
         }).addTo(map);
-        
+
         const markers = L.layerGroup().addTo(map);
-        
+
         function getMagnitudeColor(mag) {
             mag = parseFloat(mag);
-            if (mag < 1) return '#4CAF50';   // Çok hafif - yeşil
-            if (mag < 2) return '#8BC34A';   // Hafif - açık yeşil
-            if (mag < 3) return '#FFEB3B';   // Orta - sarı
-            if (mag < 4) return '#FF9800';   // Kuvvetli - turuncu
-            return '#F44336';                // Çok kuvvetli - kırmızı
+            if (mag < 1) return '#4CAF50';
+            if (mag < 2) return '#8BC34A';
+            if (mag < 3) return '#FFEB3B';
+            if (mag < 4) return '#FF9800';
+            return '#F44336';
         }
-        
+
         function getMagnitudeSize(mag) {
             mag = parseFloat(mag);
-            return Math.max(mag * 3, 4);  // Minimum 4px, büyüklüğe göre artar
+            return Math.max(mag * 3, 4);
         }
-        
-        function getStartTime(hours) {
-            const now = new Date();
-            now.setHours(now.getHours() - parseInt(hours));
-            return now.toISOString().split('.')[0]; // ISO formatına çevir (milisanisiz)
-        }
-        
-        function getEndTime() {
-            return new Date().toISOString().split('.')[0];
-        }
-        
+
         async function fetchAFADData(hours, minMagnitude) {
-    try {
-        const response = await fetch("https://hasanadiguzel.com.tr/api/sondepremler");
-        if (!response.ok) throw new Error('API hatası: ' + response.status);
+            try {
+                const response = await fetch("https://hasanadiguzel.com.tr/api/sondepremler");
+                if (!response.ok) throw new Error('API hatası: ' + response.status);
 
-        const json = await response.json();
-        const data = json.data;
+                const json = await response.json();
+                const data = json.data;
 
-        const filteredData = data.filter(event =>
-            parseFloat(event.ml) >= parseFloat(minMagnitude)
-        );
-
-        return {
-            type: "FeatureCollection",
-            features: filteredData.map(event => {
-                const isoDateTime = `${event.tarih}T${event.saat}`.replace(/\./g, '-');
+                const filteredData = data.filter(event =>
+                    parseFloat(event.ml) >= parseFloat(minMagnitude)
+                );
 
                 return {
-                    type: "Feature",
-                    properties: {
-                        mag: parseFloat(event.ml),
-                        place: event.yer,
-                        time: new Date(isoDateTime).getTime(),
-                        depth: parseFloat(event.derinlik_km),
-                        url: "#" // Detay URL’si yok
-                    },
-                    geometry: {
-                        type: "Point",
-                        coordinates: [
-                            parseFloat(event.boylam_e),
-                            parseFloat(event.enlem_n),
-                            parseFloat(event.derinlik_km)
-                        ]
-                    }
+                    type: "FeatureCollection",
+                    features: filteredData.map(event => {
+                        const isoDateTime = `${event.tarih}T${event.saat}`.replace(/\./g, '-');
+                        return {
+                            type: "Feature",
+                            properties: {
+                                mag: parseFloat(event.ml),
+                                place: event.yer,
+                                time: new Date(isoDateTime).getTime(),
+                                depth: parseFloat(event.derinlik_km),
+                                url: "#"
+                            },
+                            geometry: {
+                                type: "Point",
+                                coordinates: [
+                                    parseFloat(event.boylam_e),
+                                    parseFloat(event.enlem_n),
+                                    parseFloat(event.derinlik_km)
+                                ]
+                            }
+                        };
+                    })
                 };
-            })
-        };
-    } catch (error) {
-        console.error('Veri çekme hatası:', error.message);
-        return { features: [] };
-    }
-}
+            } catch (error) {
+                console.error('Veri çekme hatası:', error.message);
+                return { features: [] };
+            }
+        }
 
-        
         function translateLocation(place) {
             const translations = {
-                'Turkey': 'Türkiye',
-                'Aegean Sea': 'Ege Denizi',
-                'Mediterranean Sea': 'Akdeniz',
-                'Black Sea': 'Karadeniz',
-                'Greece': 'Yunanistan',
-                'Iran': 'İran',
-                'Iraq': 'Irak',
-                'Syria': 'Suriye',
-                'Armenia': 'Ermenistan',
-                'Georgia': 'Gürcistan',
-                'Bulgaria': 'Bulgaristan',
-                'km': 'kilometre',
-                'ENE': 'doğu-kuzeydoğu',
-                'ESE': 'doğu-güneydoğu',
-                'NE': 'kuzeydoğu',
-                'NNE': 'kuzey-kuzeydoğu',
-                'NNW': 'kuzey-kuzeybatı',
-                'NW': 'kuzeybatı',
-                'SE': 'güneydoğu',
-                'SSE': 'güney-güneydoğu',
-                'SSW': 'güney-güneybatı',
-                'SW': 'güneybatı',
-                'WNW': 'batı-kuzeybatı',
-                'WSW': 'batı-güneybatı'
+                'Turkey': 'Türkiye', 'Aegean Sea': 'Ege Denizi',
+                'Mediterranean Sea': 'Akdeniz', 'Black Sea': 'Karadeniz',
+                'Greece': 'Yunanistan', 'Iran': 'İran', 'Iraq': 'Irak',
+                'Syria': 'Suriye', 'Armenia': 'Ermenistan', 'Georgia': 'Gürcistan',
+                'Bulgaria': 'Bulgaristan', 'km': 'kilometre',
+                'ENE': 'doğu-kuzeydoğu', 'ESE': 'doğu-güneydoğu',
+                'NE': 'kuzeydoğu', 'NNE': 'kuzey-kuzeydoğu',
+                'NNW': 'kuzey-kuzeybatı', 'NW': 'kuzeybatı',
+                'SE': 'güneydoğu', 'SSE': 'güney-güneydoğu',
+                'SSW': 'güney-güneybatı', 'SW': 'güneybatı',
+                'WNW': 'batı-kuzeybatı', 'WSW': 'batı-güneybatı'
             };
-            
             let translated = place;
             for (const [eng, tur] of Object.entries(translations)) {
                 translated = translated.replace(new RegExp(eng, 'gi'), tur);
             }
-            
             return translated || "Bilinmeyen Konum";
         }
-        
+
+        function updateStats(earthquakes) {
+            if (!earthquakes?.features?.length) {
+                document.getElementById('totalCount').textContent = '0';
+                document.getElementById('maxMag').textContent = '-';
+                document.getElementById('avgDepth').textContent = '-';
+                document.getElementById('last24hCount').textContent = '0';
+                return;
+            }
+            const features = earthquakes.features;
+            const mags = features.map(f => f.properties.mag);
+            const depths = features.map(f => f.properties.depth);
+            const now = Date.now();
+            const dayAgo = now - 24 * 60 * 60 * 1000;
+            const last24h = features.filter(f => f.properties.time > dayAgo).length;
+
+            document.getElementById('totalCount').textContent = features.length;
+            document.getElementById('maxMag').textContent = Math.max(...mags).toFixed(1);
+            document.getElementById('avgDepth').textContent = (depths.reduce((a, b) => a + b, 0) / depths.length).toFixed(1);
+            document.getElementById('last24hCount').textContent = last24h;
+        }
+
         function displayEarthquakes(earthquakes) {
             markers.clearLayers();
             const listContainer = document.getElementById('earthquakeList');
-            listContainer.innerHTML = '';
-            
+            listContainer.innerHTML = '<h2>Son Depremler Listesi</h2>';
+
             if (!earthquakes?.features?.length) {
-                listContainer.innerHTML = '<div class="error">Seçilen kriterlere uygun deprem bulunamadı.</div>';
+                listContainer.innerHTML += '<div class="error">Seçilen kriterlere uygun deprem bulunamadı.</div>';
+                updateStats(null);
                 return;
             }
-            
-            earthquakes.features.sort((a, b) => b.properties.time - a.properties.time);
 
-            
+            earthquakes.features.sort((a, b) => b.properties.time - a.properties.time);
+            updateStats(earthquakes);
+
             earthquakes.features.forEach(quake => {
-                const { mag, place, time, depth, url } = quake.properties;
+                const { mag, place, time, depth } = quake.properties;
                 const [longitude, latitude] = quake.geometry.coordinates;
                 const turkishPlace = translateLocation(place);
-                
-                // Haritada işaretleme
+
                 const marker = L.circleMarker([latitude, longitude], {
                     radius: getMagnitudeSize(mag),
                     fillColor: getMagnitudeColor(mag),
@@ -355,60 +824,64 @@
                     opacity: 1,
                     fillOpacity: 0.8
                 }).addTo(markers);
-                
+
                 marker.bindPopup(`
                     <strong>Büyüklük:</strong> ${parseFloat(mag).toFixed(1)}<br>
                     <strong>Yer:</strong> ${turkishPlace}<br>
                     <strong>Derinlik:</strong> ${parseFloat(depth).toFixed(1)} km<br>
-                    <strong>Zaman:</strong> ${new Date(time).toLocaleString('tr-TR')}<br>
-                    <a href="${url}" target="_blank">Detaylı bilgi</a>
+                    <strong>Zaman:</strong> ${new Date(time).toLocaleString('tr-TR')}
                 `);
-                
-                // Liste öğesi
-                const quakeItem = document.createElement('div');
+
+                const quakeItem = document.createElement('article');
                 quakeItem.className = 'earthquake-item';
+                quakeItem.setAttribute('aria-label', `${parseFloat(mag).toFixed(1)} büyüklüğünde deprem - ${turkishPlace}`);
                 quakeItem.innerHTML = `
-                    <div style="display: flex; align-items: center;">
-                        <span class="magnitude" style="background-color: ${getMagnitudeColor(mag)}">${parseFloat(mag).toFixed(1)}</span>
+                    <div style="display:flex;align-items:center;">
+                        <span class="magnitude" style="background-color:${getMagnitudeColor(mag)}" aria-hidden="true">${parseFloat(mag).toFixed(1)}</span>
                         <h3>${turkishPlace}</h3>
                     </div>
-                    <p>${new Date(time).toLocaleString('tr-TR')}</p>
+                    <p><time datetime="${new Date(time).toISOString()}">${new Date(time).toLocaleString('tr-TR')}</time></p>
                     <p>Derinlik: ${parseFloat(depth).toFixed(1)} km</p>
                 `;
-                
+
                 quakeItem.addEventListener('click', () => {
                     map.setView([latitude, longitude], 7);
                     marker.openPopup();
                 });
-                
+
                 listContainer.appendChild(quakeItem);
             });
-            
-            document.getElementById('lastUpdated').textContent = new Date().toLocaleString('tr-TR');
+
+            const updated = new Date();
+            const lastUpdatedEl = document.getElementById('lastUpdated');
+            lastUpdatedEl.textContent = updated.toLocaleString('tr-TR');
+            lastUpdatedEl.setAttribute('datetime', updated.toISOString());
         }
-        
+
         async function loadEarthquakes() {
             const hours = document.getElementById('timeRange').value;
             const minMagnitude = document.getElementById('minMagnitude').value;
-            
-            document.getElementById('earthquakeList').innerHTML = '<div class="loading">Deprem verileri yükleniyor...</div>';
-            
+
+            document.getElementById('earthquakeList').innerHTML = '<h2>Son Depremler Listesi</h2><div class="loading" aria-busy="true">Deprem verileri yükleniyor...</div>';
+
             try {
                 const earthquakes = await fetchAFADData(hours, minMagnitude);
                 displayEarthquakes(earthquakes);
             } catch (error) {
-                document.getElementById('earthquakeList').innerHTML = 
-                    '<div class="error">Veriler yüklenirken hata oluştu. Lütfen daha sonra tekrar deneyin.</div>';
+                document.getElementById('earthquakeList').innerHTML =
+                    '<h2>Son Depremler Listesi</h2><div class="error">Veriler yüklenirken hata oluştu. Lütfen daha sonra tekrar deneyin.</div>';
                 console.error('Yükleme hatası:', error);
             }
         }
-        
+
         document.getElementById('refreshBtn').addEventListener('click', loadEarthquakes);
         document.getElementById('timeRange').addEventListener('change', loadEarthquakes);
         document.getElementById('minMagnitude').addEventListener('change', loadEarthquakes);
-        
-        // Sayfa yüklendiğinde verileri çek
+
         document.addEventListener('DOMContentLoaded', loadEarthquakes);
+
+        // 5 dakikada bir otomatik güncelle
+        setInterval(loadEarthquakes, 5 * 60 * 1000);
     </script>
 </body>
 </html>
