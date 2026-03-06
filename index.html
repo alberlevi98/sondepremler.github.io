@@ -162,6 +162,8 @@
       gtag('config', 'G-770EYYY3DZ');
     </script>
 
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging-compat.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css">
 
     <style>
@@ -648,92 +650,6 @@
                 <p>Deprem büyüklüğü, bir depremin serbest bıraktığı enerji miktarını ölçen sayısal bir değerdir. Richter ölçeğinde her bir tam sayı artışı, yaklaşık 31,6 kat daha fazla enerji anlamına gelir. 2.0 altındaki depremler genellikle hissedilmezken, 4.0 ve üzeri depremler geniş alanlarda hissedilebilir ve hasar verebilir.</p>
             </section>
 
-            <!-- Şehir Linkleri -->
-            <section class="info-section" id="sehirler">
-                <h2>Şehre Göre Deprem Takibi</h2>
-                <p>Türkiye'nin tüm illerine ait anlık deprem haritası ve son deprem listesine ulaşmak için aşağıdan şehrinizi seçin.</p>
-                <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
-                    <a href="/istanbul-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">İstanbul</a>
-                    <a href="/ankara-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Ankara</a>
-                    <a href="/izmir-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">İzmir</a>
-                    <a href="/bursa-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Bursa</a>
-                    <a href="/antalya-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Antalya</a>
-                    <a href="/konya-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Konya</a>
-                    <a href="/adana-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Adana</a>
-                    <a href="/gaziantep-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Gaziantep</a>
-                    <a href="/kahramanmaras-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Kahramanmaraş</a>
-                    <a href="/diyarbakir-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Diyarbakır</a>
-                    <a href="/kayseri-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Kayseri</a>
-                    <a href="/mersin-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Mersin</a>
-                    <a href="/eskisehir-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Eskişehir</a>
-                    <a href="/trabzon-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Trabzon</a>
-                    <a href="/samsun-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Samsun</a>
-                    <a href="/malatya-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Malatya</a>
-                    <a href="/elazig-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Elazığ</a>
-                    <a href="/erzurum-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Erzurum</a>
-                    <a href="/van-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Van</a>
-                    <a href="/hatay-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Hatay</a>
-                    <a href="/sakarya-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Sakarya</a>
-                    <a href="/kocaeli-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Kocaeli</a>
-                    <a href="/tekirdag-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Tekirdağ</a>
-                    <a href="/edirne-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Edirne</a>
-                    <a href="/canakkale-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Çanakkale</a>
-                    <a href="/balikesir-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Balıkesir</a>
-                    <a href="/manisa-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Manisa</a>
-                    <a href="/aydin-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Aydın</a>
-                    <a href="/denizli-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Denizli</a>
-                    <a href="/mugla-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Muğla</a>
-                    <a href="/burdur-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Burdur</a>
-                    <a href="/isparta-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Isparta</a>
-                    <a href="/afyonkarahisar-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Afyonkarahisar</a>
-                    <a href="/usak-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Uşak</a>
-                    <a href="/kutahya-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Kütahya</a>
-                    <a href="/bilecik-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Bilecik</a>
-                    <a href="/bolu-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Bolu</a>
-                    <a href="/duzce-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Düzce</a>
-                    <a href="/zonguldak-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Zonguldak</a>
-                    <a href="/kastamonu-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Kastamonu</a>
-                    <a href="/sinop-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Sinop</a>
-                    <a href="/amasya-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Amasya</a>
-                    <a href="/tokat-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Tokat</a>
-                    <a href="/sivas-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Sivas</a>
-                    <a href="/yozgat-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Yozgat</a>
-                    <a href="/corum-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Çorum</a>
-                    <a href="/kirikkale-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Kırıkkale</a>
-                    <a href="/nevsehir-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Nevşehir</a>
-                    <a href="/aksaray-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Aksaray</a>
-                    <a href="/nigde-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Niğde</a>
-                    <a href="/karaman-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Karaman</a>
-                    <a href="/adiyaman-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Adıyaman</a>
-                    <a href="/sanliurfa-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Şanlıurfa</a>
-                    <a href="/mardin-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Mardin</a>
-                    <a href="/batman-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Batman</a>
-                    <a href="/sirnak-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Şırnak</a>
-                    <a href="/hakkari-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Hakkari</a>
-                    <a href="/mus-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Muş</a>
-                    <a href="/bitlis-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Bitlis</a>
-                    <a href="/bingol-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Bingöl</a>
-                    <a href="/tunceli-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Tunceli</a>
-                    <a href="/agri-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Ağrı</a>
-                    <a href="/igdir-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Iğdır</a>
-                    <a href="/kars-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Kars</a>
-                    <a href="/ardahan-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Ardahan</a>
-                    <a href="/artvin-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Artvin</a>
-                    <a href="/rize-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Rize</a>
-                    <a href="/giresun-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Giresun</a>
-                    <a href="/ordu-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Ordu</a>
-                    <a href="/gumushane-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Gümüşhane</a>
-                    <a href="/bayburt-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Bayburt</a>
-                    <a href="/erzincan-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Erzincan</a>
-                    <a href="/karabuk-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Karabük</a>
-                    <a href="/bartin-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Bartın</a>
-                    <a href="/kirklareli-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Kırklareli</a>
-                    <a href="/yalova-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Yalova</a>
-                    <a href="/kilis-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Kilis</a>
-                    <a href="/osmaniye-depremleri/" style="padding:6px 14px;background:#eaf4fd;border:1px solid #d0e8f8;border-radius:20px;color:#2980b9;text-decoration:none;font-size:0.9em;transition:background 0.15s;" onmouseover="this.style.background='#3498db';this.style.color='white'" onmouseout="this.style.background='#eaf4fd';this.style.color='#2980b9'">Osmaniye</a>
-                </div>
-            </section>
-
             <!-- SSS -->
             <section class="info-section" id="sss">
                 <h2>Sıkça Sorulan Sorular (SSS)</h2>
@@ -971,3 +887,118 @@
     </script>
 </body>
 </html>
+
+<style>
+.notif-banner {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2c3e50;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9em;
+    max-width: 90%;
+    animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+    from { transform: translateX(-50%) translateY(20px); opacity: 0; }
+    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+.notif-banner button {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+.notif-banner .close-btn {
+    background: transparent;
+    color: #bdc3c7;
+    padding: 4px 8px;
+    font-size: 1.1em;
+}
+</style>
+
+<div class="notif-banner" id="notifBanner">
+    🔔 <span>Deprem bildirimlerini almak ister misiniz?</span>
+    <button id="notifAllow">İzin Ver</button>
+    <button class="close-btn" id="notifClose">✕</button>
+</div>
+
+<script>
+const firebaseConfig = {
+    apiKey: "AIzaSyDMerZsWx35hdic49RJJyyYPa_gaiUm2U8",
+    authDomain: "son-depremler-489413.firebaseapp.com",
+    projectId: "son-depremler-489413",
+    storageBucket: "son-depremler-489413.firebasestorage.app",
+    messagingSenderId: "972943552006",
+    appId: "1:972943552006:web:e7d305a8b0e185d7d8dd87"
+};
+
+firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
+
+const VAPID_KEY = "BP3Az4Vt6h_tjHkW2lY9mOUWI13c7JHVEIC1ltLw-PChoavjC7Mj0Btanzod_15T2Dp_pFQjBEBO3wKPpRpC_kA";
+
+// Banner göster
+window.addEventListener('load', () => {
+    if ('Notification' in window && Notification.permission === 'default') {
+        const dismissed = localStorage.getItem('notif_dismissed');
+        if (!dismissed) {
+            setTimeout(() => {
+                document.getElementById('notifBanner').style.display = 'flex';
+            }, 3000);
+        }
+    }
+});
+
+document.getElementById('notifAllow')?.addEventListener('click', async () => {
+    try {
+        const permission = await Notification.requestPermission();
+        if (permission === 'granted') {
+            const token = await messaging.getToken({ vapidKey: VAPID_KEY });
+            console.log('FCM Token:', token);
+            // Token'ı backend'e gönder
+            await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token })
+            }).catch(() => {});
+            document.getElementById('notifBanner').style.display = 'none';
+            alert('✅ Deprem bildirimleri açıldı!');
+        }
+    } catch (e) {
+        console.error('Bildirim hatası:', e);
+    }
+});
+
+document.getElementById('notifClose')?.addEventListener('click', () => {
+    document.getElementById('notifBanner').style.display = 'none';
+    localStorage.setItem('notif_dismissed', '1');
+});
+
+// Ön planda mesaj al
+messaging.onMessage((payload) => {
+    const mag = payload.data?.magnitude || '?';
+    const place = payload.data?.place || 'Bilinmeyen';
+    const emoji = parseFloat(mag) >= 5.0 ? '🔴' : parseFloat(mag) >= 4.0 ? '🟠' : '🟡';
+    
+    if (Notification.permission === 'granted') {
+        new Notification(`${emoji} ${mag} Büyüklüğünde Deprem!`, {
+            body: `📍 ${place}`,
+            icon: '/icon-192.png'
+        });
+    }
+});
+</script>
