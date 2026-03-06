@@ -953,9 +953,8 @@ const VAPID_KEY = "BP3Az4Vt6h_tjHkW2lY9mOUWI13c7JHVEIC1ltLw-PChoavjC7Mj0Btanzod_
 
 // Banner göster
 window.addEventListener('load', () => {
-    if ('Notification' in window && Notification.permission === 'default') {
-        const dismissed = localStorage.getItem('notif_dismissed');
-        if (!dismissed) {
+    if ('Notification' in window && Notification.permission === 'default' && !localStorage.getItem('notif_asked')) {
+        if (true) {
             setTimeout(() => {
                 document.getElementById('notifBanner').style.display = 'flex';
             }, 3000);
@@ -975,6 +974,7 @@ document.getElementById('notifAllow')?.addEventListener('click', async () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ token })
             }).catch(() => {});
+            localStorage.setItem('notif_asked', '1');
             document.getElementById('notifBanner').style.display = 'none';
             alert('✅ Deprem bildirimleri açıldı!');
         }
@@ -985,7 +985,7 @@ document.getElementById('notifAllow')?.addEventListener('click', async () => {
 
 document.getElementById('notifClose')?.addEventListener('click', () => {
     document.getElementById('notifBanner').style.display = 'none';
-    localStorage.setItem('notif_dismissed', '1');
+    localStorage.setItem('notif_asked', '1');
 });
 
 // Ön planda mesaj al
