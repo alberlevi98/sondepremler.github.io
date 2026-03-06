@@ -3,6 +3,6 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-Sitemap: https://sondepremler.site/sitemap.xml
+Sitemap: https://son-depremler.com/sitemap.xml
 
 Crawl-delay: 10
