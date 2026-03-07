@@ -624,15 +624,6 @@
                 <div class="legend-item"><span class="legend-dot" style="background:#F44336"></span> 4.0+ Çok Kuvvetli</div>
             </div>
 
-            <!-- İl Detay Modal -->
-            <div id="ilModal" role="dialog" aria-modal="true" aria-labelledby="ilModalBaslik" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;overflow-y:auto;">
-                <div style="background:#1e2d3a;max-width:600px;margin:40px auto;border-radius:12px;padding:24px;position:relative;">
-                    <button onclick="document.getElementById('ilModal').style.display='none'" aria-label="Kapat" style="position:absolute;top:14px;right:16px;background:none;border:none;color:#aaa;font-size:1.5rem;cursor:pointer;">✕</button>
-                    <h2 id="ilModalBaslik" style="color:#4fc3f7;margin-bottom:16px;font-size:1.3rem;"></h2>
-                    <div id="ilModalIcerik"></div>
-                </div>
-            </div>
-
             <!-- Dashboard: Harita + Liste -->
             <section class="dashboard" aria-label="Deprem haritası ve listesi">
                 <div class="map-container" role="application" aria-label="Türkiye deprem haritası">
@@ -645,12 +636,9 @@
                 </div>
             </section>
 
-            <!-- İl Listesi Paneli -->
+            <!-- İl Listesi -->
             <section id="ilListesiSection" aria-label="İllere göre deprem listesi" style="margin-top:18px;margin-bottom:18px;">
-                <h2 style="font-size:1.1rem;margin-bottom:10px;color:#e0e0e0;">🗺️ İllere Göre Depremler</h2>
-                <div id="ilListesi" style="display:flex;flex-wrap:wrap;gap:8px;">
-                    <div class="loading" aria-busy="true">Yükleniyor...</div>
-                </div>
+                <div id="ilListesi" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
             </section>
         </div>
 
@@ -876,7 +864,6 @@
             lastUpdatedEl.textContent = updated.toLocaleString('tr-TR');
             lastUpdatedEl.setAttribute('datetime', updated.toISOString());
 
-            updateIlListesi(earthquakes.features);
         }
 
         // İl adını yer stringinden çıkar
@@ -907,68 +894,54 @@
             return last || place;
         }
 
-        function updateIlListesi(features) {
-            const ilMap = {};
-            features.forEach(f => {
-                const place = translateLocation(f.properties.place);
-                const il = extractIl(place);
-                if (!ilMap[il]) ilMap[il] = [];
-                ilMap[il].push(f);
-            });
+        // Sabit 81 il listesini render et
+        const IL_LIST = [
+            {ad:'Adana',slug:'adana'},{ad:'Adıyaman',slug:'adiyaman'},{ad:'Afyonkarahisar',slug:'afyonkarahisar'},
+            {ad:'Ağrı',slug:'agri'},{ad:'Aksaray',slug:'aksaray'},{ad:'Amasya',slug:'amasya'},
+            {ad:'Ankara',slug:'ankara'},{ad:'Antalya',slug:'antalya'},{ad:'Ardahan',slug:'ardahan'},
+            {ad:'Artvin',slug:'artvin'},{ad:'Aydın',slug:'aydin'},{ad:'Balıkesir',slug:'balikesir'},
+            {ad:'Bartın',slug:'bartin'},{ad:'Batman',slug:'batman'},{ad:'Bayburt',slug:'bayburt'},
+            {ad:'Bilecik',slug:'bilecik'},{ad:'Bingöl',slug:'bingol'},{ad:'Bitlis',slug:'bitlis'},
+            {ad:'Bolu',slug:'bolu'},{ad:'Burdur',slug:'burdur'},{ad:'Bursa',slug:'bursa'},
+            {ad:'Çanakkale',slug:'canakkale'},{ad:'Çankırı',slug:'cankiri'},{ad:'Çorum',slug:'corum'},
+            {ad:'Denizli',slug:'denizli'},{ad:'Diyarbakır',slug:'diyarbakir'},{ad:'Düzce',slug:'duzce'},
+            {ad:'Edirne',slug:'edirne'},{ad:'Elazığ',slug:'elazig'},{ad:'Erzincan',slug:'erzincan'},
+            {ad:'Erzurum',slug:'erzurum'},{ad:'Eskişehir',slug:'eskisehir'},{ad:'Gaziantep',slug:'gaziantep'},
+            {ad:'Giresun',slug:'giresun'},{ad:'Gümüşhane',slug:'gumushane'},{ad:'Hakkari',slug:'hakkari'},
+            {ad:'Hatay',slug:'hatay'},{ad:'Iğdır',slug:'igdir'},{ad:'Isparta',slug:'isparta'},
+            {ad:'İstanbul',slug:'istanbul'},{ad:'İzmir',slug:'izmir'},{ad:'Kahramanmaraş',slug:'kahramanmaras'},
+            {ad:'Karabük',slug:'karabuk'},{ad:'Karaman',slug:'karaman'},{ad:'Kars',slug:'kars'},
+            {ad:'Kastamonu',slug:'kastamonu'},{ad:'Kayseri',slug:'kayseri'},{ad:'Kırıkkale',slug:'kirikkale'},
+            {ad:'Kırklareli',slug:'kirklareli'},{ad:'Kırşehir',slug:'kirsehir'},{ad:'Kilis',slug:'kilis'},
+            {ad:'Kocaeli',slug:'kocaeli'},{ad:'Konya',slug:'konya'},{ad:'Kütahya',slug:'kutahya'},
+            {ad:'Malatya',slug:'malatya'},{ad:'Manisa',slug:'manisa'},{ad:'Mardin',slug:'mardin'},
+            {ad:'Mersin',slug:'mersin'},{ad:'Muğla',slug:'mugla'},{ad:'Muş',slug:'mus'},
+            {ad:'Nevşehir',slug:'nevsehir'},{ad:'Niğde',slug:'nigde'},{ad:'Ordu',slug:'ordu'},
+            {ad:'Osmaniye',slug:'osmaniye'},{ad:'Rize',slug:'rize'},{ad:'Sakarya',slug:'sakarya'},
+            {ad:'Samsun',slug:'samsun'},{ad:'Siirt',slug:'siirt'},{ad:'Sinop',slug:'sinop'},
+            {ad:'Sivas',slug:'sivas'},{ad:'Şanlıurfa',slug:'sanliurfa'},{ad:'Şırnak',slug:'sirnak'},
+            {ad:'Tekirdağ',slug:'tekirdag'},{ad:'Tokat',slug:'tokat'},{ad:'Trabzon',slug:'trabzon'},
+            {ad:'Tunceli',slug:'tunceli'},{ad:'Uşak',slug:'usak'},{ad:'Van',slug:'van'},
+            {ad:'Yalova',slug:'yalova'},{ad:'Yozgat',slug:'yozgat'},{ad:'Zonguldak',slug:'zonguldak'},
+        ];
 
-            const sorted = Object.entries(ilMap).sort((a, b) => b[1].length - a[1].length);
+        function renderIlListesi() {
             const container = document.getElementById('ilListesi');
-            container.innerHTML = '';
-
-            if (sorted.length === 0) {
-                container.innerHTML = '<p style="color:#aaa">Veri yok</p>';
-                return;
-            }
-
-            sorted.forEach(([il, quakes]) => {
-                const maxMag = Math.max(...quakes.map(q => q.properties.mag));
-                const btn = document.createElement('button');
-                btn.style.cssText = `
-                    background:${getMagnitudeColor(maxMag)};
-                    color:#111;font-weight:700;border:none;border-radius:8px;
-                    padding:7px 13px;cursor:pointer;font-size:0.85rem;
-                    display:flex;flex-direction:column;align-items:center;gap:2px;
-                    min-width:90px;transition:transform 0.15s;
+            IL_LIST.forEach(({ad, slug}) => {
+                const a = document.createElement('a');
+                a.href = `/${slug}-depremleri/`;
+                a.textContent = ad;
+                a.style.cssText = `
+                    background:#2c3e50;color:#bdc3c7;font-size:0.82rem;font-weight:500;
+                    border:1px solid #3d5166;border-radius:6px;text-decoration:none;
+                    padding:6px 16px;transition:background 0.15s,color 0.15s;white-space:nowrap;
                 `;
-                btn.innerHTML = `<span>${il}</span><span style="font-size:0.75rem;font-weight:400">${quakes.length} deprem</span>`;
-                btn.setAttribute('aria-label', `${il} - ${quakes.length} deprem, en büyük M${maxMag.toFixed(1)}`);
-                btn.onmouseenter = () => btn.style.transform = 'scale(1.07)';
-                btn.onmouseleave = () => btn.style.transform = 'scale(1)';
-                btn.onclick = () => showIlDetay(il, quakes);
-                container.appendChild(btn);
+                a.onmouseenter = () => { a.style.background='#34495e'; a.style.color='#ecf0f1'; };
+                a.onmouseleave = () => { a.style.background='#2c3e50'; a.style.color='#bdc3c7'; };
+                container.appendChild(a);
             });
         }
-
-        function showIlDetay(il, quakes) {
-            document.getElementById('ilModalBaslik').textContent = `📍 ${il} — ${quakes.length} Deprem`;
-            const sorted = [...quakes].sort((a, b) => b.properties.time - a.properties.time);
-            let html = `<div style="max-height:420px;overflow-y:auto;">`;
-            sorted.forEach(q => {
-                const { mag, place, time, depth } = q.properties;
-                const color = getMagnitudeColor(mag);
-                html += `
-                    <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #2e3f4f;">
-                        <span style="background:${color};color:#111;font-weight:700;border-radius:6px;padding:4px 10px;font-size:1rem;min-width:42px;text-align:center;">M${parseFloat(mag).toFixed(1)}</span>
-                        <div>
-                            <div style="color:#e0e0e0;font-size:0.9rem;">${translateLocation(place)}</div>
-                            <div style="color:#90a4ae;font-size:0.8rem;">${new Date(time).toLocaleString('tr-TR')} · Derinlik: ${parseFloat(depth).toFixed(1)} km</div>
-                        </div>
-                    </div>`;
-            });
-            html += `</div>`;
-            document.getElementById('ilModalIcerik').innerHTML = html;
-            document.getElementById('ilModal').style.display = 'block';
-        }
-
-        // Modal dışına tıklayınca kapat
-        document.getElementById('ilModal').addEventListener('click', function(e) {
-            if (e.target === this) this.style.display = 'none';
-        });
+        renderIlListesi();
 
         async function loadEarthquakes() {
             const hours = document.getElementById('timeRange').value;
