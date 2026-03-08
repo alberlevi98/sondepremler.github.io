@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Arka plan daire -->
+  <circle cx="32" cy="32" r="30" fill="#1a252f"/>
+  <!-- Deprem dalgası çizgileri -->
+  <path d="M10 32 Q16 22 22 32 Q28 42 34 32 Q40 22 46 32 Q52 42 54 32" stroke="#e74c3c" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Merkez nokta -->
+  <circle cx="34" cy="32" r="3.5" fill="#e74c3c"/>
+  <!-- Alt yatay zemin çizgisi -->
+  <line x1="8" y1="44" x2="56" y2="44" stroke="#3d5166" stroke-width="1.5"/>
+</svg>
