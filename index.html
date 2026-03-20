@@ -211,17 +211,39 @@
         .refresh-btn.spinning svg { animation:spin .8s ease }
         @keyframes spin { to{transform:rotate(360deg)} }
 
-        .felt-btn {
-            margin-left: auto;
-            padding: 8px 18px; border: 2px solid var(--accent); border-radius: 24px;
-            background: var(--accent-light); color: var(--accent); font-size: 0.8rem;
-            font-family: var(--font); font-weight: 600; cursor: pointer;
-            transition: all .2s; display: flex; align-items: center; gap: 6px;
+        /* ===== PER-EARTHQUAKE FELT ===== */
+        .eq-felt {
+            display: flex; align-items: center; gap: 4px;
+            flex-shrink: 0; margin-left: auto;
         }
-        .felt-btn:hover { background: var(--accent); color: white; transform: scale(1.03); }
-        .felt-btn:active { transform: scale(0.97); }
-        .felt-btn svg { width: 16px; height: 16px; }
-        .felt-btn.clicked { background: var(--accent); color: white; pointer-events: none; }
+        .eq-felt-count {
+            font-size: 0.62rem; color: var(--text-muted); font-weight: 600;
+            font-family: var(--mono);
+        }
+        .eq-felt-count:empty { display: none; }
+        .eq-felt-btn {
+            display: flex; align-items: center; gap: 3px;
+            padding: 3px 8px; border-radius: 14px; border: 1px solid var(--border);
+            background: var(--bg); color: var(--text-muted); font-size: 0.62rem;
+            font-family: var(--font); font-weight: 600; cursor: pointer;
+            transition: all .15s; white-space: nowrap;
+        }
+        .eq-felt-btn svg { width: 12px; height: 12px; flex-shrink: 0; }
+        .eq-felt-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+        .eq-felt-btn.felt { background: var(--accent-light); color: var(--accent); border-color: var(--accent); pointer-events: none; }
+
+        /* Felt in map popup */
+        .popup-felt-btn {
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 5px 14px; border-radius: 16px; border: 1.5px solid var(--accent);
+            background: var(--accent-light); color: var(--accent); font-size: 0.78rem;
+            font-family: var(--font); font-weight: 600; cursor: pointer;
+            transition: all .15s; margin-top: 8px;
+        }
+        .popup-felt-btn:hover { background: var(--accent); color: white; }
+        .popup-felt-btn.felt { background: var(--accent); color: white; pointer-events: none; }
+        .popup-felt-btn svg { width: 14px; height: 14px; }
+        .popup-felt-count { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
 
         /* ===== LEGEND ===== */
         .legend { display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px;font-size:0.72rem;color:var(--text-muted);font-weight:500 }
@@ -448,7 +470,6 @@
             .hero-card { flex-direction:column;text-align:center;gap:10px;padding:18px }
             .hero-mag { font-size:2.2rem }
             .hero-timer { text-align:center }
-            .felt-btn { margin-left:0 }
             .info-section { padding:18px }
         }
         @media print {
@@ -512,10 +533,6 @@
                 <button class="refresh-btn" id="refreshBtn">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
                     Yenile
-                </button>
-                <button class="felt-btn" id="feltBtn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg>
-                    Deprem Hissettim!
                 </button>
             </div>
 
@@ -681,6 +698,35 @@
         document.getElementById('last24hCount').textContent=f.filter(x=>x.properties.time>Date.now()-86400000).length;
     }
 
+    // Per-earthquake felt system
+    const feltRef = db.ref('felt/quakes');
+    const feltIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>';
+    const feltCheckIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+
+    // Create a stable key for each earthquake (based on time+mag+place)
+    function eqKey(time, mag, place) {
+        const t = String(Math.floor(time/1000));
+        const m = String(Math.round(mag*10));
+        const p = (place||'').replace(/[^a-zA-Z0-9]/g,'').substring(0,12);
+        return t + '_' + m + '_' + p;
+    }
+
+    function feltForQuake(key, countEl) {
+        feltRef.child(key).child('count').on('value', (snap) => {
+            const c = snap.val() || 0;
+            countEl.textContent = c > 0 ? c + ' kişi hissetti' : '';
+        });
+    }
+
+    function markFelt(key, btn) {
+        if (localStorage.getItem('felt_' + key)) return;
+        localStorage.setItem('felt_' + key, '1');
+        btn.classList.add('felt');
+        btn.innerHTML = feltCheckIcon + ' Hissettim';
+        // Atomic increment
+        feltRef.child(key).child('count').transaction(c => (c||0) + 1);
+    }
+
     function display(eq){
         markers.clearLayers();
         const lc=document.getElementById('earthquakeList');
@@ -691,17 +737,60 @@
         eq.features.forEach((q,i)=>{
             const{mag,place,time,depth}=q.properties;
             const[lon,lat]=q.geometry.coordinates;const c=magColor(mag);
+            const key=eqKey(time,mag,place);
+            const alreadyFelt=localStorage.getItem('felt_'+key);
+
+            // Map popup with felt button
+            const popupDiv=document.createElement('div');
+            popupDiv.style.fontFamily="'Outfit',sans-serif";
+            popupDiv.innerHTML=
+                '<div style="font-family:\'JetBrains Mono\',monospace;font-size:1.4rem;font-weight:700;color:'+c+'">'+mag.toFixed(1)+'</div>'+
+                '<div style="font-weight:600;margin:4px 0">'+place+'</div>'+
+                '<div style="color:#64648c;font-size:0.8rem">Derinlik: '+depth.toFixed(1)+' km<br>'+new Date(time).toLocaleString('tr-TR')+'</div>'+
+                '<div class="popup-felt-count" data-key="'+key+'"></div>'+
+                '<button class="popup-felt-btn'+(alreadyFelt?' felt':'')+'" data-key="'+key+'">'+
+                    (alreadyFelt?feltCheckIcon+' Hissettim':feltIcon+' Hissettim!')+
+                '</button>';
+
             const mk=L.circleMarker([lat,lon],{radius:magSize(mag),fillColor:c,color:c,weight:1.5,opacity:0.8,fillOpacity:0.45}).addTo(markers);
-            mk.bindPopup(`<div style="font-family:'Outfit',sans-serif"><div style="font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;color:${c}">${mag.toFixed(1)}</div><div style="font-weight:600;margin:4px 0">${place}</div><div style="color:#64648c;font-size:0.8rem">Derinlik: ${depth.toFixed(1)} km<br>${new Date(time).toLocaleString('tr-TR')}</div></div>`);
+            mk.bindPopup(popupDiv);
+
+            mk.on('popupopen', ()=>{
+                const pcEl=popupDiv.querySelector('.popup-felt-count');
+                feltForQuake(key, pcEl);
+                const pbtn=popupDiv.querySelector('.popup-felt-btn');
+                pbtn.onclick=(e)=>{ e.stopPropagation(); markFelt(key, pbtn); };
+            });
+
+            // List item with felt
             const el=document.createElement('article');
             el.className='eq-item'+(mag>=4?' strong':'');
-            el.innerHTML=`
-                <span class="eq-mag" style="background:${magBg(mag)};color:${c}"><span>${mag.toFixed(1)}</span><span class="eq-mag-label">MAG</span></span>
-                <div class="eq-info">
-                    <div class="eq-place" title="${place}">${place}</div>
-                    <div class="eq-meta"><span class="eq-time-ago">${timeAgo(time)}</span><span class="eq-depth">${depth.toFixed(1)} km</span></div>
-                </div>`;
-            el.onclick=()=>{map.setView([lat,lon],8,{animate:true,duration:0.5});mk.openPopup()};
+            el.innerHTML=
+                '<span class="eq-mag" style="background:'+magBg(mag)+';color:'+c+'"><span>'+mag.toFixed(1)+'</span><span class="eq-mag-label">MAG</span></span>'+
+                '<div class="eq-info">'+
+                    '<div class="eq-place" title="'+place+'">'+place+'</div>'+
+                    '<div class="eq-meta"><span class="eq-time-ago">'+timeAgo(time)+'</span><span class="eq-depth">'+depth.toFixed(1)+' km</span></div>'+
+                '</div>'+
+                '<div class="eq-felt">'+
+                    '<span class="eq-felt-count" data-key="'+key+'"></span>'+
+                    '<button class="eq-felt-btn'+(alreadyFelt?' felt':'')+'" data-key="'+key+'">'+
+                        (alreadyFelt?feltCheckIcon:feltIcon)+
+                    '</button>'+
+                '</div>';
+
+            // Wire felt count listener
+            const fcEl=el.querySelector('.eq-felt-count');
+            feltForQuake(key, fcEl);
+
+            // Wire felt button
+            const fbtn=el.querySelector('.eq-felt-btn');
+            fbtn.onclick=(e)=>{ e.stopPropagation(); markFelt(key, fbtn); fbtn.innerHTML=feltCheckIcon; };
+
+            // Click item to focus map
+            el.onclick=(e)=>{
+                if(e.target.closest('.eq-felt-btn')) return;
+                map.setView([lat,lon],8,{animate:true,duration:0.5});mk.openPopup();
+            };
             lc.appendChild(el);
         });
         const now=new Date();const el=document.getElementById('lastUpdated');
@@ -711,9 +800,6 @@
     // İl listesi
     const IL=[{ad:'Adana',s:'adana'},{ad:'Adıyaman',s:'adiyaman'},{ad:'Afyonkarahisar',s:'afyonkarahisar'},{ad:'Ağrı',s:'agri'},{ad:'Aksaray',s:'aksaray'},{ad:'Amasya',s:'amasya'},{ad:'Ankara',s:'ankara'},{ad:'Antalya',s:'antalya'},{ad:'Ardahan',s:'ardahan'},{ad:'Artvin',s:'artvin'},{ad:'Aydın',s:'aydin'},{ad:'Balıkesir',s:'balikesir'},{ad:'Bartın',s:'bartin'},{ad:'Batman',s:'batman'},{ad:'Bayburt',s:'bayburt'},{ad:'Bilecik',s:'bilecik'},{ad:'Bingöl',s:'bingol'},{ad:'Bitlis',s:'bitlis'},{ad:'Bolu',s:'bolu'},{ad:'Burdur',s:'burdur'},{ad:'Bursa',s:'bursa'},{ad:'Çanakkale',s:'canakkale'},{ad:'Çankırı',s:'cankiri'},{ad:'Çorum',s:'corum'},{ad:'Denizli',s:'denizli'},{ad:'Diyarbakır',s:'diyarbakir'},{ad:'Düzce',s:'duzce'},{ad:'Edirne',s:'edirne'},{ad:'Elazığ',s:'elazig'},{ad:'Erzincan',s:'erzincan'},{ad:'Erzurum',s:'erzurum'},{ad:'Eskişehir',s:'eskisehir'},{ad:'Gaziantep',s:'gaziantep'},{ad:'Giresun',s:'giresun'},{ad:'Gümüşhane',s:'gumushane'},{ad:'Hakkari',s:'hakkari'},{ad:'Hatay',s:'hatay'},{ad:'Iğdır',s:'igdir'},{ad:'Isparta',s:'isparta'},{ad:'İstanbul',s:'istanbul'},{ad:'İzmir',s:'izmir'},{ad:'Kahramanmaraş',s:'kahramanmaras'},{ad:'Karabük',s:'karabuk'},{ad:'Karaman',s:'karaman'},{ad:'Kars',s:'kars'},{ad:'Kastamonu',s:'kastamonu'},{ad:'Kayseri',s:'kayseri'},{ad:'Kırıkkale',s:'kirikkale'},{ad:'Kırklareli',s:'kirklareli'},{ad:'Kırşehir',s:'kirsehir'},{ad:'Kilis',s:'kilis'},{ad:'Kocaeli',s:'kocaeli'},{ad:'Konya',s:'konya'},{ad:'Kütahya',s:'kutahya'},{ad:'Malatya',s:'malatya'},{ad:'Manisa',s:'manisa'},{ad:'Mardin',s:'mardin'},{ad:'Mersin',s:'mersin'},{ad:'Muğla',s:'mugla'},{ad:'Muş',s:'mus'},{ad:'Nevşehir',s:'nevsehir'},{ad:'Niğde',s:'nigde'},{ad:'Ordu',s:'ordu'},{ad:'Osmaniye',s:'osmaniye'},{ad:'Rize',s:'rize'},{ad:'Sakarya',s:'sakarya'},{ad:'Samsun',s:'samsun'},{ad:'Siirt',s:'siirt'},{ad:'Sinop',s:'sinop'},{ad:'Sivas',s:'sivas'},{ad:'Şanlıurfa',s:'sanliurfa'},{ad:'Şırnak',s:'sirnak'},{ad:'Tekirdağ',s:'tekirdag'},{ad:'Tokat',s:'tokat'},{ad:'Trabzon',s:'trabzon'},{ad:'Tunceli',s:'tunceli'},{ad:'Uşak',s:'usak'},{ad:'Van',s:'van'},{ad:'Yalova',s:'yalova'},{ad:'Yozgat',s:'yozgat'},{ad:'Zonguldak',s:'zonguldak'}];
     const ilC=document.getElementById('ilListesi');IL.forEach(({ad,s})=>{const a=document.createElement('a');a.href=`/${s}-depremleri/`;a.textContent=ad;ilC.appendChild(a)});
-
-    // Felt button
-    document.getElementById('feltBtn').addEventListener('click',function(){this.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Kaydedildi!';this.classList.add('clicked')});
 
     async function load(){
         const h=document.getElementById('timeRange').value;

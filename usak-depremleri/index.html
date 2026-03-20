@@ -215,12 +215,13 @@
         .eq-item:last-child {border-bottom:none}
         .eq-item:hover {background:var(--bg)}
         
-        .eq-mag {width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:0.82rem;flex-shrink:0}
+        .eq-mag-label { font-size:0.45rem;font-weight:500;opacity:0.7;margin-top:1px;font-family:var(--font);letter-spacing:0.04em }
+        .eq-mag {width:42px;height:42px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:0.85rem;flex-shrink:0;line-height:1}
         .eq-info {flex:1;min-width:0}
         .eq-place {font-size:0.8rem;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
         .eq-meta {font-size:0.68rem;color:var(--text-muted);margin-top:2px;display:flex;align-items:center;gap:8px}
         .eq-meta-sep {width:3px;height:3px;background:var(--text-muted);border-radius:50%;flex-shrink:0}
-        .eq-depth-tag {font-family:var(--mono);font-size:0.62rem;background:var(--surface);border:1px solid var(--border);padding:1px 6px;border-radius:4px;color:var(--text-sub);font-weight:500}
+        .eq-depth {font-family:var(--mono);font-size:0.62rem;background:var(--surface);border:1px solid var(--border);padding:1px 6px;border-radius:4px;color:var(--text-sub);font-weight:500}
 
         .loading {text-align:center;padding:48px 16px;color:var(--text-muted);font-size:0.82rem}
         .loading-spinner {width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 12px}
@@ -244,6 +245,21 @@
         .faq-item summary::-webkit-details-marker {display:none}
         .faq-item summary:hover {color:var(--accent)}
         .faq-item p {margin-top:8px}
+
+        
+        /* ===== PER-EARTHQUAKE FELT ===== */
+        .eq-felt { display:flex;align-items:center;gap:4px;flex-shrink:0;margin-left:auto }
+        .eq-felt-count { font-size:0.62rem;color:var(--text-muted);font-weight:600;font-family:var(--mono) }
+        .eq-felt-count:empty { display:none }
+        .eq-felt-btn { display:flex;align-items:center;gap:3px;padding:3px 8px;border-radius:14px;border:1px solid var(--border);background:var(--bg);color:var(--text-muted);font-size:0.62rem;font-family:var(--font);font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap }
+        .eq-felt-btn svg { width:12px;height:12px;flex-shrink:0 }
+        .eq-felt-btn:hover { border-color:var(--accent);color:var(--accent);background:var(--accent-light) }
+        .eq-felt-btn.felt { background:var(--accent-light);color:var(--accent);border-color:var(--accent);pointer-events:none }
+        .popup-felt-btn { display:inline-flex;align-items:center;gap:4px;padding:5px 14px;border-radius:16px;border:1.5px solid var(--accent);background:var(--accent-light);color:var(--accent);font-size:0.78rem;font-family:var(--font);font-weight:600;cursor:pointer;transition:all .15s;margin-top:8px }
+        .popup-felt-btn:hover { background:var(--accent);color:white }
+        .popup-felt-btn.felt { background:var(--accent);color:white;pointer-events:none }
+        .popup-felt-btn svg { width:14px;height:14px }
+        .popup-felt-count { font-size:0.72rem;color:var(--text-muted);margin-top:4px }
 
         .site-footer {border-top:1px solid var(--border);text-align:center;padding:24px;font-size:0.7rem;color:var(--text-muted);margin-top:30px}
         .site-footer a {color:var(--text-sub);text-decoration:none}
@@ -417,6 +433,8 @@
         <p><a href="/">T\üm T\ürkiye Deprem Haritas\ı</a> \· &copy; <span id="currentYear">2026</span> Son Depremler T\ürkiye</p>
     </footer>
 
+        <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -556,33 +574,59 @@
                 const [longitude, latitude] = quake.geometry.coordinates;
                 const tp = translateLocation(place);
                 const color = getMagnitudeColor(mag);
+                const key = eqKey(time, mag, place);
+                const alreadyFelt = localStorage.getItem('felt_' + key);
+
+                const popupDiv = document.createElement('div');
+                popupDiv.style.fontFamily = "'Outfit',sans-serif";
+                popupDiv.innerHTML =
+                    '<div style="font-family:\'JetBrains Mono\',monospace;font-size:1.3rem;font-weight:700;color:' + color + '">' + parseFloat(mag).toFixed(1) + '</div>' +
+                    '<div style="font-weight:600;margin:4px 0">' + tp + '</div>' +
+                    '<div style="color:#64648c;font-size:0.8rem">Derinlik: ' + parseFloat(depth).toFixed(1) + ' km<br>' + new Date(time).toLocaleString('tr-TR') + '</div>' +
+                    '<div class="popup-felt-count" data-key="' + key + '"></div>' +
+                    '<button class="popup-felt-btn' + (alreadyFelt ? ' felt' : '') + '" data-key="' + key + '">' +
+                        (alreadyFelt ? feltCheckIcon + ' Hissettim' : feltIcon + ' Hissettim!') +
+                    '</button>';
+
                 const marker = L.circleMarker([latitude, longitude], {
                     radius: getMagnitudeSize(mag), fillColor: color, color: color,
-                    weight: 1.5, opacity: 0.8, fillOpacity: 0.5
+                    weight: 1.5, opacity: 0.8, fillOpacity: 0.45
                 }).addTo(markers);
-                marker.bindPopup(`
-                    <div style="font-size:0.82rem;line-height:1.7">
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;color:${color};margin-bottom:4px">${parseFloat(mag).toFixed(1)}</div>
-                        <div style="font-weight:600;margin-bottom:6px">${tp}</div>
-                        <div style="color:#64648c">Derinlik: ${parseFloat(depth).toFixed(1)} km</div>
-                        <div style="color:#64648c">${new Date(time).toLocaleString('tr-TR')}</div>
-                    </div>
-                `);
+                marker.bindPopup(popupDiv);
+                marker.on('popupopen', () => {
+                    const pcEl = popupDiv.querySelector('.popup-felt-count');
+                    feltForQuake(key, pcEl);
+                    const pbtn = popupDiv.querySelector('.popup-felt-btn');
+                    pbtn.onclick = (e) => { e.stopPropagation(); markFelt(key, pbtn); };
+                });
+
                 const el = document.createElement('article');
-                el.className = 'eq-item';
-                el.setAttribute('aria-label', `${parseFloat(mag).toFixed(1)} b\üy\ükl\ü\ğ\ünde deprem - ${tp}`);
-                el.innerHTML = `
-                    <span class="eq-mag" style="background:${getMagBg(mag)};color:${color};border:1px solid ${color}22">${parseFloat(mag).toFixed(1)}</span>
-                    <div class="eq-info">
-                        <div class="eq-place" title="${tp}">${tp}</div>
-                        <div class="eq-meta">
-                            <time datetime="${new Date(time).toISOString()}">${timeAgo(time)}</time>
-                            <span class="eq-meta-sep"></span>
-                            <span class="eq-depth-tag">${parseFloat(depth).toFixed(1)} km</span>
-                        </div>
-                    </div>
-                `;
-                el.addEventListener('click', () => { map.setView([latitude, longitude], 9, { animate: true, duration: 0.5 }); marker.openPopup(); });
+                el.className = 'eq-item' + (mag >= 4 ? ' strong' : '');
+                el.innerHTML =
+                    '<span class="eq-mag" style="background:' + getMagBg(mag) + ';color:' + color + '">' +
+                        '<span>' + parseFloat(mag).toFixed(1) + '</span><span class="eq-mag-label">MAG</span></span>' +
+                    '<div class="eq-info">' +
+                        '<div class="eq-place" title="' + tp + '">' + tp + '</div>' +
+                        '<div class="eq-meta">' +
+                            '<span class="eq-time-ago">' + timeAgo(time) + '</span>' +
+                            '<span class="eq-depth">' + parseFloat(depth).toFixed(1) + ' km</span>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="eq-felt">' +
+                        '<span class="eq-felt-count" data-key="' + key + '"></span>' +
+                        '<button class="eq-felt-btn' + (alreadyFelt ? ' felt' : '') + '" data-key="' + key + '">' +
+                            (alreadyFelt ? feltCheckIcon : feltIcon) +
+                        '</button>' +
+                    '</div>';
+
+                const fcEl = el.querySelector('.eq-felt-count');
+                feltForQuake(key, fcEl);
+                const fbtn = el.querySelector('.eq-felt-btn');
+                fbtn.onclick = (e) => { e.stopPropagation(); markFelt(key, fbtn); fbtn.innerHTML = feltCheckIcon; };
+                el.onclick = (e) => {
+                    if (e.target.closest('.eq-felt-btn')) return;
+                    map.setView([latitude, longitude], 9, { animate: true, duration: 0.5 }); marker.openPopup();
+                };
                 lc.appendChild(el);
             });
             const updated = new Date();
@@ -612,6 +656,43 @@
         document.getElementById('minMagnitude').addEventListener('change', loadEarthquakes);
         document.addEventListener('DOMContentLoaded', loadEarthquakes);
         setInterval(loadEarthquakes, 5 * 60 * 1000);
+
+    // Firebase for felt system
+    if (!firebase.apps.length) {
+        firebase.initializeApp({
+            apiKey: "AIzaSyDMerZsWx35hdic49RJJyyYPa_gaiUm2U8",
+            authDomain: "son-depremler-489413.firebaseapp.com",
+            databaseURL: "https://son-depremler-489413-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "son-depremler-489413",
+            storageBucket: "son-depremler-489413.firebasestorage.app",
+            messagingSenderId: "972943552006",
+            appId: "1:972943552006:web:e7d305a8b0e185d7d8dd87"
+        });
+    }
+    const feltDb = firebase.database();
+    const feltRef = feltDb.ref('felt/quakes');
+    const feltIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>';
+    const feltCheckIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+
+    function eqKey(time, mag, place) {
+        var t = String(Math.floor(time/1000));
+        var m = String(Math.round(mag*10));
+        var p = (place||'').replace(/[^a-zA-Z0-9]/g,'').substring(0,12);
+        return t + '_' + m + '_' + p;
+    }
+    function feltForQuake(key, el) {
+        feltRef.child(key).child('count').on('value', function(s) {
+            var c = s.val() || 0;
+            el.textContent = c > 0 ? c + ' kişi hissetti' : '';
+        });
+    }
+    function markFelt(key, btn) {
+        if (localStorage.getItem('felt_' + key)) return;
+        localStorage.setItem('felt_' + key, '1');
+        btn.classList.add('felt');
+        btn.innerHTML = feltCheckIcon + ' Hissettim';
+        feltRef.child(key).child('count').transaction(function(c) { return (c||0) + 1; });
+    }
     </script>
 </body>
 </html>
