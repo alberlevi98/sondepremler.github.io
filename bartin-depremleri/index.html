@@ -9,7 +9,6 @@
     <meta name="keywords" content="bartın depremleri, bartın son deprem, bartın deprem, bartın deprem haritası, bartın anlık deprem, bartın depremleri, bartın deprem oldu mu">
 
     <link rel="canonical" href="https://son-depremler.com/bartin-depremleri/">
-
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="Turkish">
     <meta name="geo.region" content="TR">
@@ -42,7 +41,6 @@
         }
     }
     </script>
-
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -63,7 +61,6 @@
         ]
     }
     </script>
-
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -100,13 +97,15 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
     <link rel="preconnect" href="https://hasanadiguzel.com.tr" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-    <meta name="theme-color" content="#1a252f">
+    <meta name="theme-color" content="#0a0f1a">
 
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-770EYYY3DZ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -115,225 +114,174 @@
       gtag('config', 'G-770EYYY3DZ');
     </script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css">
 
     <style>
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
         :root {
-            --bg: #f8f9fb;
-            --surface: #ffffff;
-            --text: #1f2937;
-            --text-secondary: #6b7280;
-            --border: #e5e7eb;
-            --accent: #2563eb;
-            --accent-hover: #1d4ed8;
-            --green: #22c55e;
-            --lime: #84cc16;
-            --yellow: #eab308;
-            --orange: #f97316;
-            --red: #ef4444;
-            --radius: 10px;
+            --bg:#0a0f1a;--bg-elevated:#111827;--bg-card:#151d2e;--bg-card-hover:#1a2540;
+            --surface:rgba(255,255,255,0.04);--surface-hover:rgba(255,255,255,0.07);
+            --glass:rgba(21,29,46,0.85);--glass-border:rgba(255,255,255,0.06);
+            --text:#e8edf5;--text-secondary:#7b8ba3;--text-muted:#4a5568;
+            --border:rgba(255,255,255,0.06);--border-strong:rgba(255,255,255,0.1);
+            --accent:#3b82f6;--accent-glow:rgba(59,130,246,0.15);
+            --green:#10b981;--green-bg:rgba(16,185,129,0.12);
+            --lime:#84cc16;--yellow:#f59e0b;--orange:#f97316;
+            --red:#ef4444;--red-bg:rgba(239,68,68,0.12);--red-glow:rgba(239,68,68,0.2);
+            --radius:14px;--radius-sm:8px;--radius-xs:6px;
+            --font:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+            --mono:'JetBrains Mono',monospace;
+            --shadow:0 4px 24px rgba(0,0,0,0.25);--shadow-lg:0 8px 40px rgba(0,0,0,0.4);
         }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
+            font-family:var(--font);background:var(--bg);color:var(--text);
+            line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
         }
-
-        .sr-only {
-            position:absolute;width:1px;height:1px;padding:0;margin:-1px;
-            overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        body::before {
+            content:'';position:fixed;top:-200px;left:50%;transform:translateX(-50%);
+            width:800px;height:500px;background:radial-gradient(ellipse,rgba(59,130,246,0.06) 0%,transparent 70%);
+            pointer-events:none;z-index:0;
         }
-        .skip-link {
-            position:absolute;top:-40px;left:0;background:var(--accent);
-            color:#fff;padding:8px 16px;z-index:10000;font-size:14px;transition:top .2s;
-        }
+        .sr-only {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+        .skip-link {position:absolute;top:-40px;left:0;background:var(--accent);color:#fff;padding:8px 16px;z-index:10000;font-size:14px;transition:top .2s;border-radius:0 0 8px 0}
         .skip-link:focus{top:0}
 
-        .site-header {
-            background: #111827;
-            color: #fff;
-            padding: 16px 24px;
-        }
-        .header-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-        .header-inner h1 {
-            font-size: 1.15rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-        .header-inner h1 span { color: var(--red); }
-        .header-meta {
-            font-size: 0.78rem;
-            color: #9ca3af;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .live-dot {
-            width: 7px; height: 7px;
-            background: var(--green);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%,100%{opacity:1} 50%{opacity:0.4}
-        }
+        .site-header {position:sticky;top:0;z-index:100;background:rgba(10,15,26,0.8);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border);padding:0 24px}
+        .header-inner {max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+        .header-brand {display:flex;align-items:center;gap:10px}
+        .header-icon {width:32px;height:32px;background:linear-gradient(135deg,var(--red),#dc2626);border-radius:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px var(--red-glow)}
+        .header-icon svg {width:18px;height:18px;color:white}
+        .header-inner h1 {font-size:1.05rem;font-weight:600;letter-spacing:-0.02em;color:var(--text)}
+        .header-right {display:flex;align-items:center;gap:16px}
+        .header-meta {font-size:0.72rem;color:var(--text-secondary);display:flex;align-items:center;gap:6px;font-weight:500;letter-spacing:0.02em;text-transform:uppercase}
+        .live-badge {display:flex;align-items:center;gap:5px;background:var(--green-bg);border:1px solid rgba(16,185,129,0.2);color:var(--green);padding:3px 10px 3px 7px;border-radius:20px;font-size:0.68rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase}
+        .live-dot {width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;box-shadow:0 0 6px var(--green)}
+        @keyframes pulse {0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.85)}}
 
-        .breadcrumb {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 10px 24px;
-            font-size: 0.78rem;
-            color: var(--text-secondary);
-        }
-        .breadcrumb a { color: var(--accent); text-decoration: none; }
-        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb {max-width:1320px;margin:0 auto;padding:12px 24px 0;font-size:0.72rem;color:var(--text-muted)}
+        .breadcrumb a {color:var(--text-secondary);text-decoration:none;transition:color .15s}
+        .breadcrumb a:hover {color:var(--accent)}
+        .breadcrumb span {margin:0 6px;opacity:0.4}
 
-        .city-nav {
-            border-bottom: 1px solid var(--border);
-            padding: 8px 24px;
-            font-size: 0.78rem;
-        }
-        .city-nav-inner {
-            max-width: 1200px; margin: 0 auto;
-            display: flex; flex-wrap: wrap; gap: 5px; align-items: center;
-        }
-        .city-nav-inner span { color: var(--text-secondary); margin-right: 4px; }
-        .city-nav a {
-            color: var(--accent); text-decoration: none; padding: 3px 8px;
-            border-radius: 4px; border: 1px solid var(--border); font-size: 0.75rem;
-            transition: all .12s;
-        }
-        .city-nav a:hover { background: #eff6ff; border-color: var(--accent); }
-        .city-nav a.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .city-nav {border-bottom:1px solid var(--border);padding:10px 24px;font-size:0.75rem}
+        .city-nav-inner {max-width:1320px;margin:0 auto;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+        .city-nav-inner span {color:var(--text-muted);margin-right:4px;font-weight:500}
+        .city-nav a {color:var(--text-secondary);text-decoration:none;padding:3px 9px;border-radius:var(--radius-xs);border:1px solid var(--border);font-size:0.7rem;transition:all .15s;font-weight:500}
+        .city-nav a:hover {color:var(--accent);border-color:rgba(59,130,246,0.3);background:var(--accent-glow)}
+        .city-nav a.active {background:var(--accent);color:#fff;border-color:var(--accent)}
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px 24px; }
+        .container {max-width:1320px;margin:0 auto;padding:16px 24px 24px;position:relative;z-index:1}
 
-        .toolbar {
-            display: flex; align-items: center; gap: 8px;
-            margin-bottom: 10px; flex-wrap: wrap;
-        }
-        .toolbar select {
-            padding: 7px 12px; border: 1px solid var(--border); border-radius: 6px;
-            background: var(--surface); color: var(--text); font-size: 0.8rem;
-            cursor: pointer; appearance: auto; outline: none; transition: border-color .15s;
-        }
-        .toolbar select:focus { border-color: var(--accent); }
-        .toolbar .refresh-btn {
-            padding: 7px 14px; border: 1px solid var(--border); border-radius: 6px;
-            background: var(--surface); color: var(--text); font-size: 0.8rem;
-            cursor: pointer; font-weight: 500; transition: background .15s, border-color .15s;
-            display: flex; align-items: center; gap: 4px;
-        }
-        .toolbar .refresh-btn:hover { background: var(--bg); border-color: #d1d5db; }
-        .toolbar .refresh-btn svg { width: 13px; height: 13px; }
+        .toolbar {display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;animation:fadeInUp .4s ease both}
+        .toolbar select {padding:8px 32px 8px 12px;border:1px solid var(--border-strong);border-radius:var(--radius-xs);background:var(--bg-card);color:var(--text);font-size:0.78rem;font-family:var(--font);font-weight:500;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237b8ba3' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;outline:none;transition:border-color .2s,box-shadow .2s}
+        .toolbar select:focus {border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+        .refresh-btn {padding:8px 16px;border:1px solid var(--border-strong);border-radius:var(--radius-xs);background:var(--bg-card);color:var(--text);font-size:0.78rem;font-family:var(--font);font-weight:500;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+        .refresh-btn:hover {background:var(--bg-card-hover);border-color:var(--accent);color:var(--accent)}
+        .refresh-btn:active {transform:scale(0.97)}
+        .refresh-btn svg {width:13px;height:13px}
+        .refresh-btn.spinning svg {animation:spin .8s ease}
+        @keyframes spin {to{transform:rotate(360deg)}}
 
-        .stats-row { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
-        .stat {
-            flex: 1; min-width: 100px; background: var(--surface);
-            border: 1px solid var(--border); border-radius: 8px;
-            padding: 10px 12px; text-align: center;
-        }
-        .stat-val { font-size: 1.25rem; font-weight: 700; color: var(--text); display: block; line-height: 1.2; }
-        .stat-lbl { font-size: 0.68rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; }
+        .stats-row {display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;animation:fadeInUp .4s ease both;animation-delay:.1s}
+        .stat {background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
+        .stat:hover {border-color:var(--border-strong);transform:translateY(-1px)}
+        .stat-val {font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--text);display:block;line-height:1.1;letter-spacing:-0.03em}
+        .stat-lbl {font-size:0.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;font-weight:600;margin-top:4px}
+        .stat:nth-child(1) .stat-val {color:var(--accent)}
+        .stat:nth-child(2) .stat-val {color:var(--red)}
+        .stat:nth-child(3) .stat-val {color:var(--yellow)}
+        .stat:nth-child(4) .stat-val {color:var(--green)}
+        .stat::after {content:'';position:absolute;top:0;left:0;right:0;height:2px}
+        .stat:nth-child(1)::after {background:linear-gradient(90deg,var(--accent),transparent)}
+        .stat:nth-child(2)::after {background:linear-gradient(90deg,var(--red),transparent)}
+        .stat:nth-child(3)::after {background:linear-gradient(90deg,var(--yellow),transparent)}
+        .stat:nth-child(4)::after {background:linear-gradient(90deg,var(--green),transparent)}
 
-        .legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; font-size: 0.72rem; color: var(--text-secondary); }
-        .legend-item { display: flex; align-items: center; gap: 4px; }
-        .legend-dot { width: 9px; height: 9px; border-radius: 50%; }
+        .legend {display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;font-size:0.7rem;color:var(--text-muted);font-weight:500}
+        .legend-item {display:flex;align-items:center;gap:5px}
+        .legend-dot {width:8px;height:8px;border-radius:50%;box-shadow:0 0 6px currentColor}
 
-        .dashboard { display: flex; gap: 10px; }
-        .map-wrap {
-            flex: 5; min-width: 0; height: 500px; background: var(--surface);
-            border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
-        }
-        #earthquakeMap { height: 100%; width: 100%; }
+        .dashboard {display:flex;gap:12px;animation:fadeInUp .4s ease both;animation-delay:.2s}
+        .map-wrap {flex:5;min-width:0;height:540px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+        #earthquakeMap {height:100%;width:100%}
+        .leaflet-tile {filter:brightness(0.7) contrast(1.1) saturate(0.3) hue-rotate(180deg) invert(1)}
+        .leaflet-container {background:var(--bg-card)}
+        .leaflet-popup-content-wrapper {background:var(--bg-card)!important;color:var(--text)!important;border-radius:var(--radius-sm)!important;border:1px solid var(--border-strong)!important;box-shadow:var(--shadow-lg)!important;font-family:var(--font)!important;font-size:0.8rem!important}
+        .leaflet-popup-tip {background:var(--bg-card)!important}
+        .leaflet-popup-content {margin:12px 14px!important;line-height:1.6!important}
+        .leaflet-popup-content strong {color:var(--text-secondary);font-weight:500}
+        .leaflet-control-zoom a {background:var(--bg-card)!important;color:var(--text)!important;border-color:var(--border)!important}
+        .leaflet-control-zoom a:hover {background:var(--bg-card-hover)!important}
+        .leaflet-control-attribution {background:rgba(10,15,26,0.7)!important;color:var(--text-muted)!important;font-size:10px!important}
+        .leaflet-control-attribution a {color:var(--text-secondary)!important}
 
-        .eq-list {
-            flex: 2; min-width: 270px; background: var(--surface);
-            border: 1px solid var(--border); border-radius: var(--radius);
-            max-height: 500px; overflow-y: auto; display: flex; flex-direction: column;
-        }
-        .eq-list-header {
-            padding: 10px 14px; border-bottom: 1px solid var(--border);
-            font-size: 0.82rem; font-weight: 600; color: var(--text);
-            position: sticky; top: 0; background: var(--surface); z-index: 2;
-        }
-        .eq-item {
-            display: flex; align-items: flex-start; gap: 10px;
-            padding: 9px 14px; border-bottom: 1px solid var(--border);
-            cursor: pointer; transition: background .12s;
-        }
-        .eq-item:last-child { border-bottom: none; }
-        .eq-item:hover { background: #f3f4f6; }
-        .eq-mag {
-            width: 34px; height: 34px; border-radius: 7px;
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; font-weight: 700; font-size: 0.78rem; flex-shrink: 0;
-        }
-        .eq-info { flex: 1; min-width: 0; }
-        .eq-place { font-size: 0.8rem; font-weight: 500; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .eq-meta { font-size: 0.7rem; color: var(--text-secondary); margin-top: 1px; }
+        .eq-list {flex:2;min-width:300px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);max-height:540px;overflow-y:auto;display:flex;flex-direction:column}
+        .eq-list-header {padding:14px 16px;border-bottom:1px solid var(--border);font-size:0.78rem;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;position:sticky;top:0;background:var(--bg-card);z-index:2;display:flex;align-items:center;gap:8px;backdrop-filter:blur(10px)}
+        .eq-list-header::before {content:'';width:4px;height:14px;background:var(--accent);border-radius:2px}
+        .eq-item {display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;position:relative}
+        .eq-item:last-child {border-bottom:none}
+        .eq-item:hover {background:var(--surface-hover)}
+        .eq-item:hover::before {content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent)}
+        .eq-mag {width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:0.82rem;flex-shrink:0}
+        .eq-info {flex:1;min-width:0}
+        .eq-place {font-size:0.8rem;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
+        .eq-meta {font-size:0.68rem;color:var(--text-muted);margin-top:2px;display:flex;align-items:center;gap:8px}
+        .eq-meta-sep {width:3px;height:3px;background:var(--text-muted);border-radius:50%;flex-shrink:0}
+        .eq-depth-tag {font-family:var(--mono);font-size:0.62rem;background:var(--surface);border:1px solid var(--border);padding:1px 6px;border-radius:4px;color:var(--text-secondary);font-weight:500}
 
-        .loading { text-align: center; padding: 32px 16px; color: var(--text-secondary); font-size: 0.82rem; }
-        .error { color: var(--red); padding: 20px; text-align: center; font-size: 0.82rem; }
+        .loading {text-align:center;padding:48px 16px;color:var(--text-muted);font-size:0.82rem}
+        .loading-spinner {width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 12px}
+        .error {color:var(--red);padding:24px;text-align:center;font-size:0.82rem}
 
-        .seo-content { max-width: 1200px; margin: 20px auto; padding: 0 24px; }
-        .info-section {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius); padding: 22px; margin-bottom: 10px;
-        }
-        .info-section h2 {
-            font-size: 1rem; font-weight: 600; color: var(--text);
-            margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border);
-        }
-        .info-section h3 { font-size: 0.88rem; font-weight: 600; color: var(--text); margin: 14px 0 4px; }
-        .info-section p { color: var(--text-secondary); font-size: 0.82rem; line-height: 1.65; margin-bottom: 6px; }
-        .faq-item { border-bottom: 1px solid var(--border); padding: 10px 0; }
-        .faq-item:last-child { border-bottom: none; }
-        .faq-item summary { cursor: pointer; font-weight: 600; color: var(--text); font-size: 0.85rem; padding: 2px 0; }
-        .faq-item summary:hover { color: var(--accent); }
-        .faq-item p { margin-top: 6px; }
+        .eq-list::-webkit-scrollbar {width:5px}
+        .eq-list::-webkit-scrollbar-track {background:transparent}
+        .eq-list::-webkit-scrollbar-thumb {background:var(--border-strong);border-radius:4px}
 
-        .site-footer {
-            border-top: 1px solid var(--border); text-align: center;
-            padding: 18px 24px; font-size: 0.72rem; color: var(--text-secondary); margin-top: 20px;
-        }
-        .site-footer a { color: var(--accent); text-decoration: none; }
-        .site-footer a:hover { text-decoration: underline; }
-        .site-footer p { margin: 2px 0; }
+        .seo-content {max-width:1320px;margin:20px auto 0;padding:0 24px}
+        .info-section {background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:12px}
+        .info-section h2 {font-size:1rem;font-weight:600;color:var(--text);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+        .info-section h2::before {content:'';width:4px;height:18px;background:var(--accent);border-radius:2px}
+        .info-section h3 {font-size:0.88rem;font-weight:600;color:var(--text);margin:16px 0 6px}
+        .info-section p {color:var(--text-secondary);font-size:0.82rem;line-height:1.7;margin-bottom:8px}
+        .faq-item {border-bottom:1px solid var(--border);padding:12px 0}
+        .faq-item:last-child {border-bottom:none}
+        .faq-item summary {cursor:pointer;font-weight:600;color:var(--text);font-size:0.85rem;padding:4px 0;transition:color .15s;list-style:none;display:flex;align-items:center;justify-content:space-between}
+        .faq-item summary::after {content:'+';font-size:1.1rem;color:var(--text-muted);transition:transform .2s;font-weight:400}
+        .faq-item[open] summary::after {content:'\2212';color:var(--accent)}
+        .faq-item summary::-webkit-details-marker {display:none}
+        .faq-item summary:hover {color:var(--accent)}
+        .faq-item p {margin-top:8px}
 
-        @media (max-width: 768px) {
-            .header-inner { flex-direction: column; align-items: flex-start; gap: 4px; }
-            .header-inner h1 { font-size: 1rem; }
-            .dashboard { flex-direction: column; }
-            .map-wrap { height: 320px; }
-            .eq-list { max-height: 380px; }
-            .stat { min-width: 70px; padding: 8px 6px; }
-            .stat-val { font-size: 1.05rem; }
-            .info-section { padding: 16px; }
-        }
+        .site-footer {border-top:1px solid var(--border);text-align:center;padding:24px;font-size:0.7rem;color:var(--text-muted);margin-top:30px}
+        .site-footer a {color:var(--text-secondary);text-decoration:none;transition:color .15s}
+        .site-footer a:hover {color:var(--accent)}
+        .site-footer p {margin:3px 0}
 
+        @keyframes fadeInUp {from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+        @media (max-width:900px) {
+            .dashboard {flex-direction:column}
+            .map-wrap {height:350px}
+            .eq-list {max-height:400px;min-width:0}
+        }
+        @media (max-width:640px) {
+            .header-inner {height:50px}
+            .header-inner h1 {font-size:0.92rem}
+            .header-meta {display:none}
+            .stats-row {grid-template-columns:repeat(2,1fr)}
+            .stat-val {font-size:1.2rem}
+            .container {padding:12px 14px 20px}
+            .map-wrap {height:280px;border-radius:var(--radius-sm)}
+            .eq-list {border-radius:var(--radius-sm)}
+            .info-section {padding:18px}
+            .city-nav {padding:8px 14px}
+        }
         @media print {
-            .site-header, .toolbar, .site-footer, .map-wrap { display: none; }
-            .eq-list { max-height: none; }
+            .site-header,.toolbar,.site-footer,.map-wrap,.legend,.city-nav {display:none}
+            .eq-list {max-height:none}
+            body {background:#fff;color:#000}
         }
-
-        .eq-list::-webkit-scrollbar { width: 4px; }
-        .eq-list::-webkit-scrollbar-track { background: transparent; }
-        .eq-list::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
     </style>
 </head>
 <body>
@@ -341,19 +289,29 @@
 
     <header class="site-header" role="banner">
         <div class="header-inner">
-            <h1><span>&#9679;</span> Bartın Depremleri</h1>
-            <div class="header-meta">
-                <span class="live-dot"></span>
-                Canlı · AFAD Verileri
+            <div class="header-brand">
+                <div class="header-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                    </svg>
+                </div>
+                <h1>Bartın Depremleri</h1>
+            </div>
+            <div class="header-right">
+                <div class="live-badge">
+                    <span class="live-dot"></span>
+                    Canl\ı
+                </div>
+                <div class="header-meta">AFAD Verileri</div>
             </div>
         </div>
     </header>
 
     <nav class="breadcrumb" aria-label="Sayfa yolu">
-        <a href="/">Ana Sayfa</a> &rsaquo; <a href="/">Son Depremler</a> &rsaquo; <strong>Bartın Depremleri</strong>
+        <a href="/">Ana Sayfa</a><span>\›</span><a href="/">Son Depremler</a><span>\›</span><strong style="color:var(--text-secondary)">Bartın Depremleri</strong>
     </nav>
 
-    <div class="city-nav" role="navigation" aria-label="Şehir deprem sayfaları">
+    <div class="city-nav" role="navigation" aria-label="Şehir deprem sayfaları" role="navigation" aria-label="Şehir deprem sayfaları">
         <div class="city-nav-inner">
             <span>Diğer Şehirler:</span>
             <a href="/istanbul-depremleri/">İstanbul</a>
@@ -382,16 +340,16 @@
         <div class="container">
 
             <div class="toolbar" role="search" aria-label="Deprem filtreleme">
-                <label for="timeRange" class="sr-only">Zaman aralığı seçin</label>
-                <select id="timeRange" aria-label="Zaman aralığı">
+                <label for="timeRange" class="sr-only">Zaman aral\ı\ğ\ı se\çin</label>
+                <select id="timeRange" aria-label="Zaman aral\ı\ğ\ı">
                     <option value="1">Son 1 Saat</option>
                     <option value="24" selected>Son 24 Saat</option>
                     <option value="168">Son 1 Hafta</option>
                     <option value="720">Son 1 Ay</option>
                 </select>
-                <label for="minMagnitude" class="sr-only">Minimum büyüklük seçin</label>
-                <select id="minMagnitude" aria-label="Minimum büyüklük">
-                    <option value="0">Tüm Büyüklükler</option>
+                <label for="minMagnitude" class="sr-only">Minimum b\üy\ükl\ük se\çin</label>
+                <select id="minMagnitude" aria-label="Minimum b\üy\ükl\ük">
+                    <option value="0">T\üm B\üy\ükl\ükler</option>
                     <option value="1">M 1.0+</option>
                     <option value="2">M 2.0+</option>
                     <option value="3">M 3.0+</option>
@@ -404,39 +362,27 @@
             </div>
 
             <div class="stats-row" role="region" aria-label="Deprem istatistikleri">
-                <div class="stat">
-                    <span class="stat-val" id="totalCount">-</span>
-                    <span class="stat-lbl">Toplam</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-val" id="maxMag">-</span>
-                    <span class="stat-lbl">En Büyük</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-val" id="avgDepth">-</span>
-                    <span class="stat-lbl">Ort. Derinlik</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-val" id="last24hCount">-</span>
-                    <span class="stat-lbl">Son 24s</span>
-                </div>
+                <div class="stat"><span class="stat-val" id="totalCount">\—</span><span class="stat-lbl">Toplam Deprem</span></div>
+                <div class="stat"><span class="stat-val" id="maxMag">\—</span><span class="stat-lbl">En B\üy\ük (M)</span></div>
+                <div class="stat"><span class="stat-val" id="avgDepth">\—</span><span class="stat-lbl">Ort. Derinlik (km)</span></div>
+                <div class="stat"><span class="stat-val" id="last24hCount">\—</span><span class="stat-lbl">Son 24 Saat</span></div>
             </div>
 
-            <div class="legend" role="img" aria-label="Deprem büyüklük renk skalası">
-                <div class="legend-item"><span class="legend-dot" style="background:var(--green)"></span> &lt;1.0</div>
-                <div class="legend-item"><span class="legend-dot" style="background:var(--lime)"></span> 1-2</div>
-                <div class="legend-item"><span class="legend-dot" style="background:var(--yellow)"></span> 2-3</div>
-                <div class="legend-item"><span class="legend-dot" style="background:var(--orange)"></span> 3-4</div>
-                <div class="legend-item"><span class="legend-dot" style="background:var(--red)"></span> 4+</div>
+            <div class="legend" role="img" aria-label="Deprem b\üy\ükl\ük renk skalas\ı">
+                <div class="legend-item"><span class="legend-dot" style="color:var(--green);background:var(--green)"></span> &lt;1.0</div>
+                <div class="legend-item"><span class="legend-dot" style="color:var(--lime);background:var(--lime)"></span> 1\–2</div>
+                <div class="legend-item"><span class="legend-dot" style="color:var(--yellow);background:var(--yellow)"></span> 2\–3</div>
+                <div class="legend-item"><span class="legend-dot" style="color:var(--orange);background:var(--orange)"></span> 3\–4</div>
+                <div class="legend-item"><span class="legend-dot" style="color:var(--red);background:var(--red)"></span> 4+</div>
             </div>
 
-            <section class="dashboard" aria-label="Deprem haritası ve listesi">
-                <div class="map-wrap" role="application" aria-label="Deprem haritası ve listesi">
+            <section class="dashboard" aria-label="Deprem haritas\ı ve listesi">
+                <div class="map-wrap" role="application" aria-label="Deprem haritas\ı">
                     <div id="earthquakeMap"></div>
                 </div>
                 <div class="eq-list" id="earthquakeList" role="feed" aria-label="Bartın deprem listesi" aria-live="polite">
                     <div class="eq-list-header">Bartın Son Depremler Listesi</div>
-                    <div class="loading" aria-busy="true">Yükleniyor...</div>
+                    <div class="loading" aria-busy="true"><div class="loading-spinner"></div>Veriler y\ükleniyor...</div>
                 </div>
             </section>
         </div>
@@ -474,9 +420,9 @@
     </main>
 
     <footer class="site-footer" role="contentinfo">
-        <p>Son güncelleme: <time id="lastUpdated" datetime="">-</time></p>
-        <p>Veri kaynağı: AFAD · Afet ve Acil Durum Yönetimi Başkanlığı</p>
-        <p><a href="/">Tüm Türkiye Deprem Haritası</a> · &copy; <span id="currentYear">2026</span> Son Depremler Türkiye</p>
+        <p>Son g\üncelleme: <time id="lastUpdated" datetime="">\—</time></p>
+        <p>Veri kayna\ğ\ı: <a href="https://deprem.afad.gov.tr" target="_blank" rel="noopener">AFAD</a> \· Afet ve Acil Durum Y\önetimi Ba\şkanl\ı\ğ\ı</p>
+        <p><a href="/">T\üm T\ürkiye Deprem Haritas\ı</a> \· &copy; <span id="currentYear">2026</span> Son Depremler T\ürkiye</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
@@ -503,18 +449,21 @@
 
         function getMagnitudeColor(mag) {
             mag = parseFloat(mag);
-            if (mag < 1) return '#22c55e';
+            if (mag < 1) return '#10b981';
             if (mag < 2) return '#84cc16';
-            if (mag < 3) return '#eab308';
+            if (mag < 3) return '#f59e0b';
             if (mag < 4) return '#f97316';
             return '#ef4444';
         }
-
-        function getMagnitudeSize(mag) {
+        function getMagnitudeSize(mag) { return Math.max(parseFloat(mag) * 3.5, 4); }
+        function getMagBg(mag) {
             mag = parseFloat(mag);
-            return Math.max(mag * 3, 4);
+            if (mag < 1) return 'rgba(16,185,129,0.15)';
+            if (mag < 2) return 'rgba(132,204,22,0.15)';
+            if (mag < 3) return 'rgba(245,158,11,0.15)';
+            if (mag < 4) return 'rgba(249,115,22,0.15)';
+            return 'rgba(239,68,68,0.15)';
         }
-
         function getDistanceKm(lat1, lon1, lat2, lon2) {
             const R = 6371;
             const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -524,11 +473,21 @@
                       Math.sin(dLon/2) * Math.sin(dLon/2);
             return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         }
+        function timeAgo(timestamp) {
+            const seconds = Math.floor((Date.now() - timestamp) / 1000);
+            if (seconds < 60) return 'Az \önce';
+            const minutes = Math.floor(seconds / 60);
+            if (minutes < 60) return `${minutes} dk \önce`;
+            const hours = Math.floor(minutes / 60);
+            if (hours < 24) return `${hours} saat \önce`;
+            const days = Math.floor(hours / 24);
+            return `${days} g\ün \önce`;
+        }
 
         async function fetchAFADData(hours, minMagnitude) {
             try {
                 const response = await fetch("https://hasanadiguzel.com.tr/api/sondepremler");
-                if (!response.ok) throw new Error('API hatası: ' + response.status);
+                if (!response.ok) throw new Error('API hatas\ı: ' + response.status);
                 const json = await response.json();
                 const data = json.data;
                 const filteredData = data.filter(event => {
@@ -559,117 +518,100 @@
                     })
                 };
             } catch (error) {
-                console.error('Veri çekme hatası:', error.message);
+                console.error('Veri \çekme hatas\ı:', error.message);
                 return { features: [] };
             }
         }
 
         function translateLocation(place) {
-            const translations = {
-                'Turkey': 'Türkiye', 'Aegean Sea': 'Ege Denizi',
-                'Mediterranean Sea': 'Akdeniz', 'Black Sea': 'Karadeniz',
-                'Greece': 'Yunanistan', 'Iran': 'İran', 'Iraq': 'Irak',
-                'Syria': 'Suriye', 'Armenia': 'Ermenistan', 'Georgia': 'Gürcistan',
-                'Bulgaria': 'Bulgaristan', 'km': 'kilometre',
-                'ENE': 'doğu-kuzeydoğu', 'ESE': 'doğu-güneydoğu',
-                'NE': 'kuzeydoğu', 'NNE': 'kuzey-kuzeydoğu',
-                'NNW': 'kuzey-kuzeybatı', 'NW': 'kuzeybatı',
-                'SE': 'güneydoğu', 'SSE': 'güney-güneydoğu',
-                'SSW': 'güney-güneybatı', 'SW': 'güneybatı',
-                'WNW': 'batı-kuzeybatı', 'WSW': 'batı-güneybatı'
-            };
-            let translated = place;
-            for (const [eng, tur] of Object.entries(translations)) {
-                translated = translated.replace(new RegExp(eng, 'gi'), tur);
-            }
-            return translated || "Bilinmeyen Konum";
+            const t = {'Turkey':'T\ürkiye','Aegean Sea':'Ege Denizi','Mediterranean Sea':'Akdeniz','Black Sea':'Karadeniz','Greece':'Yunanistan','Iran':'\İran','Iraq':'Irak','Syria':'Suriye','Armenia':'Ermenistan','Georgia':'G\ürcistan','Bulgaria':'Bulgaristan'};
+            let tr = place;
+            for (const [eng, tur] of Object.entries(t)) { tr = tr.replace(new RegExp(eng, 'gi'), tur); }
+            return tr || "Bilinmeyen Konum";
         }
 
         function updateStats(earthquakes) {
             if (!earthquakes?.features?.length) {
                 document.getElementById('totalCount').textContent = '0';
-                document.getElementById('maxMag').textContent = '-';
-                document.getElementById('avgDepth').textContent = '-';
+                document.getElementById('maxMag').textContent = '\—';
+                document.getElementById('avgDepth').textContent = '\—';
                 document.getElementById('last24hCount').textContent = '0';
                 return;
             }
-            const features = earthquakes.features;
-            const mags = features.map(f => f.properties.mag);
-            const depths = features.map(f => f.properties.depth);
-            const now = Date.now();
-            const dayAgo = now - 24 * 60 * 60 * 1000;
-            const last24h = features.filter(f => f.properties.time > dayAgo).length;
-            document.getElementById('totalCount').textContent = features.length;
+            const f = earthquakes.features;
+            const mags = f.map(x => x.properties.mag);
+            const depths = f.map(x => x.properties.depth);
+            const dayAgo = Date.now() - 86400000;
+            document.getElementById('totalCount').textContent = f.length;
             document.getElementById('maxMag').textContent = Math.max(...mags).toFixed(1);
-            document.getElementById('avgDepth').textContent = (depths.reduce((a, b) => a + b, 0) / depths.length).toFixed(1);
-            document.getElementById('last24hCount').textContent = last24h;
+            document.getElementById('avgDepth').textContent = (depths.reduce((a,b) => a+b, 0) / depths.length).toFixed(1);
+            document.getElementById('last24hCount').textContent = f.filter(x => x.properties.time > dayAgo).length;
         }
 
         function displayEarthquakes(earthquakes) {
             markers.clearLayers();
-            const listContainer = document.getElementById('earthquakeList');
-            listContainer.innerHTML = '<div class="eq-list-header">Bartın Son Depremler Listesi</div>';
-
+            const lc = document.getElementById('earthquakeList');
+            lc.innerHTML = '<div class="eq-list-header">Bartın Son Depremler Listesi</div>';
             if (!earthquakes?.features?.length) {
-                listContainer.innerHTML += '<div class="error">Seçilen kriterlere uygun Bartın çevresinde deprem bulunamadı.</div>';
+                lc.innerHTML += '<div class="error">Seçilen kriterlere uygun Bartın çevresinde deprem bulunamadı.</div>';
                 updateStats(null);
                 return;
             }
-
             earthquakes.features.sort((a, b) => b.properties.time - a.properties.time);
             updateStats(earthquakes);
-
-            earthquakes.features.forEach(quake => {
+            earthquakes.features.forEach((quake, i) => {
                 const { mag, place, time, depth } = quake.properties;
                 const [longitude, latitude] = quake.geometry.coordinates;
-                const turkishPlace = translateLocation(place);
-
+                const tp = translateLocation(place);
+                const color = getMagnitudeColor(mag);
                 const marker = L.circleMarker([latitude, longitude], {
-                    radius: getMagnitudeSize(mag),
-                    fillColor: getMagnitudeColor(mag),
-                    color: '#000', weight: 1, opacity: 1, fillOpacity: 0.8
+                    radius: getMagnitudeSize(mag), fillColor: color, color: color,
+                    weight: 1.5, opacity: 0.8, fillOpacity: 0.5
                 }).addTo(markers);
-
                 marker.bindPopup(`
-                    <strong>Büyüklük:</strong> ${parseFloat(mag).toFixed(1)}<br>
-                    <strong>Yer:</strong> ${turkishPlace}<br>
-                    <strong>Derinlik:</strong> ${parseFloat(depth).toFixed(1)} km<br>
-                    <strong>Zaman:</strong> ${new Date(time).toLocaleString('tr-TR')}
+                    <div style="font-size:0.82rem;line-height:1.7">
+                        <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;color:${color};margin-bottom:4px">${parseFloat(mag).toFixed(1)}</div>
+                        <div style="font-weight:600;margin-bottom:6px;color:#e8edf5">${tp}</div>
+                        <div style="color:#7b8ba3">Derinlik: ${parseFloat(depth).toFixed(1)} km</div>
+                        <div style="color:#7b8ba3">${new Date(time).toLocaleString('tr-TR')}</div>
+                    </div>
                 `);
-
-                const quakeItem = document.createElement('article');
-                quakeItem.className = 'eq-item';
-                quakeItem.setAttribute('aria-label', `${parseFloat(mag).toFixed(1)} büyüklüğünde deprem - ${turkishPlace}`);
-                quakeItem.innerHTML = `
-                    <span class="eq-mag" style="background:${getMagnitudeColor(mag)}">${parseFloat(mag).toFixed(1)}</span>
+                const el = document.createElement('article');
+                el.className = 'eq-item';
+                el.setAttribute('aria-label', `${parseFloat(mag).toFixed(1)} b\üy\ükl\ü\ğ\ünde deprem - ${tp}`);
+                el.innerHTML = `
+                    <span class="eq-mag" style="background:${getMagBg(mag)};color:${color};border:1px solid ${color}22">${parseFloat(mag).toFixed(1)}</span>
                     <div class="eq-info">
-                        <div class="eq-place" title="${turkishPlace}">${turkishPlace}</div>
-                        <div class="eq-meta"><time datetime="${new Date(time).toISOString()}">${new Date(time).toLocaleString('tr-TR')}</time> · ${parseFloat(depth).toFixed(1)} km</div>
+                        <div class="eq-place" title="${tp}">${tp}</div>
+                        <div class="eq-meta">
+                            <time datetime="${new Date(time).toISOString()}">${timeAgo(time)}</time>
+                            <span class="eq-meta-sep"></span>
+                            <span class="eq-depth-tag">${parseFloat(depth).toFixed(1)} km</span>
+                        </div>
                     </div>
                 `;
-                quakeItem.addEventListener('click', () => {
-                    map.setView([latitude, longitude], 9);
-                    marker.openPopup();
-                });
-                listContainer.appendChild(quakeItem);
+                el.addEventListener('click', () => { map.setView([latitude, longitude], 9, { animate: true, duration: 0.5 }); marker.openPopup(); });
+                lc.appendChild(el);
             });
-
             const updated = new Date();
-            const lastUpdatedEl = document.getElementById('lastUpdated');
-            lastUpdatedEl.textContent = updated.toLocaleString('tr-TR');
-            lastUpdatedEl.setAttribute('datetime', updated.toISOString());
+            const el = document.getElementById('lastUpdated');
+            el.textContent = updated.toLocaleString('tr-TR');
+            el.setAttribute('datetime', updated.toISOString());
         }
 
         async function loadEarthquakes() {
             const hours = document.getElementById('timeRange').value;
-            const minMagnitude = document.getElementById('minMagnitude').value;
-            document.getElementById('earthquakeList').innerHTML = '<div class="eq-list-header">Bartın Son Depremler Listesi</div><div class="loading" aria-busy="true">Yükleniyor...</div>';
+            const minMag = document.getElementById('minMagnitude').value;
+            const btn = document.getElementById('refreshBtn');
+            btn.classList.add('spinning');
+            document.getElementById('earthquakeList').innerHTML = '<div class="eq-list-header">Bartın Son Depremler Listesi</div><div class="loading" aria-busy="true"><div class="loading-spinner"></div>Veriler y\ükleniyor...</div>';
             try {
-                const earthquakes = await fetchAFADData(hours, minMagnitude);
-                displayEarthquakes(earthquakes);
+                const eq = await fetchAFADData(hours, minMag);
+                displayEarthquakes(eq);
             } catch (error) {
-                document.getElementById('earthquakeList').innerHTML =
-                    '<div class="eq-list-header">Bartın Son Depremler Listesi</div><div class="error">Veriler yüklenirken hata oluştu.</div>';
+                document.getElementById('earthquakeList').innerHTML = '<div class="eq-list-header">Bartın Son Depremler Listesi</div><div class="error">Veriler y\üklenirken hata olu\ştu.</div>';
+            } finally {
+                setTimeout(() => btn.classList.remove('spinning'), 800);
             }
         }
 
