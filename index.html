@@ -18,1155 +18,918 @@
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Son Depremler - Türkiye Canlı Deprem Haritası">
-    <meta property="og:description" content="Türkiye'deki son depremleri canlı harita üzerinde anlık takip edin. Büyüklük, derinlik ve konum bilgileriyle güncel deprem verileri.">
+    <meta property="og:description" content="Türkiye'deki son depremleri canlı harita üzerinde anlık takip edin.">
     <meta property="og:url" content="https://son-depremler.com/">
     <meta property="og:site_name" content="Son Depremler Türkiye">
     <meta property="og:locale" content="tr_TR">
     <meta property="og:image" content="https://son-depremler.com/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Son Depremler - Türkiye Canlı Deprem Haritası">
     <meta name="twitter:description" content="Türkiye'deki son depremleri canlı harita üzerinde anlık takip edin.">
-    <meta name="twitter:image" content="https://son-depremler.com/og-image.png">
 
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Son Depremler Türkiye",
-        "url": "https://son-depremler.com/",
-        "description": "Türkiye'deki son depremleri canlı harita üzerinde anlık takip edin.",
-        "inLanguage": "tr",
-        "publisher": {
-            "@type": "Organization",
-            "name": "Son Depremler Türkiye",
-            "url": "https://son-depremler.com/"
-        }
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Son Depremler - Türkiye Canlı Deprem Haritası",
-        "url": "https://son-depremler.com/",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Web",
-        "description": "Türkiye'deki son depremleri canlı harita üzerinde anlık olarak takip edebileceğiniz uygulama.",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TRY" },
-        "inLanguage": "tr",
-        "browserRequirements": "Requires JavaScript"
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "Bugün Türkiye'de deprem oldu mu?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Türkiye'deki güncel deprem verilerini bu sayfadaki canlı harita ve liste üzerinden anlık olarak takip edebilirsiniz."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Deprem verileri nereden alınmaktadır?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Deprem verileri AFAD (Afet ve Acil Durum Yönetimi Başkanlığı) kaynaklı API üzerinden anlık olarak çekilmektedir."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Deprem büyüklüğü ne anlama gelir?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Deprem büyüklüğü (magnitüd), depremin enerjisini ölçen bir değerdir. 0-2 arası hafif, 2-4 arası orta, 4 ve üzeri kuvvetli depremler olarak sınıflandırılır."
-                }
-            }
-        ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://son-depremler.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Son Depremler", "item": "https://son-depremler.com/#son-depremler" }
-        ]
-    }
-    </script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Son Depremler Türkiye","url":"https://son-depremler.com/","description":"Türkiye'deki son depremleri canlı harita üzerinde anlık takip edin.","inLanguage":"tr"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Son Depremler","url":"https://son-depremler.com/","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"},"inLanguage":"tr"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Bugün Türkiye'de deprem oldu mu?","acceptedAnswer":{"@type":"Answer","text":"Türkiye'deki güncel deprem verilerini bu sayfadaki canlı harita ve liste üzerinden anlık olarak takip edebilirsiniz."}},{"@type":"Question","name":"Deprem verileri nereden alınmaktadır?","acceptedAnswer":{"@type":"Answer","text":"Deprem verileri AFAD kaynaklı API üzerinden anlık olarak çekilmektedir."}},{"@type":"Question","name":"Deprem büyüklüğü ne anlama gelir?","acceptedAnswer":{"@type":"Answer","text":"Deprem büyüklüğü (magnitüd), depremin enerjisini ölçen bir değerdir."}}]}</script>
 
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
     <link rel="preconnect" href="https://hasanadiguzel.com.tr" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
     <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png">
-    <meta name="theme-color" content="#0a0f1a">
+    <meta name="theme-color" content="#ffffff">
 
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-770EYYY3DZ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-770EYYY3DZ');
-    </script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-770EYYY3DZ');</script>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css">
 
     <style>
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
         :root {
-            --bg: #0a0f1a;
-            --bg-elevated: #111827;
-            --bg-card: #151d2e;
-            --bg-card-hover: #1a2540;
-            --surface: rgba(255,255,255,0.04);
-            --surface-hover: rgba(255,255,255,0.07);
-            --glass: rgba(21,29,46,0.85);
-            --glass-border: rgba(255,255,255,0.06);
-            --text: #e8edf5;
-            --text-secondary: #7b8ba3;
-            --text-muted: #4a5568;
-            --border: rgba(255,255,255,0.06);
-            --border-strong: rgba(255,255,255,0.1);
-            --accent: #3b82f6;
-            --accent-glow: rgba(59,130,246,0.15);
-            --green: #10b981;
-            --green-bg: rgba(16,185,129,0.12);
-            --lime: #84cc16;
-            --lime-bg: rgba(132,204,22,0.12);
-            --yellow: #f59e0b;
-            --yellow-bg: rgba(245,158,11,0.12);
-            --orange: #f97316;
-            --orange-bg: rgba(249,115,22,0.12);
-            --red: #ef4444;
-            --red-bg: rgba(239,68,68,0.12);
-            --red-glow: rgba(239,68,68,0.2);
-            --radius: 14px;
-            --radius-sm: 8px;
-            --radius-xs: 6px;
-            --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --bg: #f5f5f7;
+            --bg-white: #ffffff;
+            --bg-warm: #fafaf9;
+            --text: #1a1a2e;
+            --text-sub: #64648c;
+            --text-muted: #9e9eb8;
+            --border: #ebebf0;
+            --border-focus: #d0d0e0;
+            --accent: #e63946;
+            --accent-light: #fef2f2;
+            --accent-mid: #fca5a5;
+            --blue: #3b82f6;
+            --blue-light: #eff6ff;
+            --green: #059669;
+            --green-light: #ecfdf5;
+            --green-dot: #10b981;
+            --lime: #65a30d;
+            --yellow: #d97706;
+            --yellow-light: #fffbeb;
+            --orange: #ea580c;
+            --red: #dc2626;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-xs: 7px;
+            --font: 'Outfit', -apple-system, sans-serif;
             --mono: 'JetBrains Mono', monospace;
-            --shadow: 0 4px 24px rgba(0,0,0,0.25);
-            --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow: 0 4px 16px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
         }
 
-        body {
-            font-family: var(--font);
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-        }
-
-        /* Ambient glow */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 500px;
-            background: radial-gradient(ellipse, rgba(59,130,246,0.06) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .sr-only {
-            position:absolute;width:1px;height:1px;padding:0;margin:-1px;
-            overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
-        }
-
-        .skip-link {
-            position:absolute;top:-40px;left:0;background:var(--accent);
-            color:#fff;padding:8px 16px;z-index:10000;font-size:14px;transition:top .2s;border-radius:0 0 8px 0;
-        }
-        .skip-link:focus{top:0}
+        body { font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased }
+        .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0 }
 
         /* ===== HEADER ===== */
         .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(10,15,26,0.8);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background: var(--bg-white);
             border-bottom: 1px solid var(--border);
-            padding: 0 24px;
+            position: sticky; top: 0; z-index: 100;
         }
         .header-inner {
-            max-width: 1320px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 56px;
+            max-width: 1280px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 24px; height: 58px;
         }
-        .header-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .header-brand { display: flex; align-items: center; gap: 10px; }
         .header-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--red), #dc2626);
-            border-radius: 9px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px var(--red-glow);
+            width: 34px; height: 34px;
+            background: var(--accent);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
         }
         .header-icon svg { width: 18px; height: 18px; color: white; }
-        .header-inner h1 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            color: var(--text);
-        }
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        .header-meta {
-            font-size: 0.72rem;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-        }
+        .header-inner h1 { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; }
+        .header-right { display: flex; align-items: center; gap: 12px; }
         .live-badge {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            background: var(--green-bg);
-            border: 1px solid rgba(16,185,129,0.2);
-            color: var(--green);
-            padding: 3px 10px 3px 7px;
-            border-radius: 20px;
-            font-size: 0.68rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
+            display: flex; align-items: center; gap: 5px;
+            background: var(--green-light); color: var(--green);
+            padding: 4px 12px 4px 8px; border-radius: 20px;
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.03em;
             text-transform: uppercase;
         }
-        .live-dot {
-            width: 6px; height: 6px;
-            background: var(--green);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-            box-shadow: 0 0 6px var(--green);
-        }
-        @keyframes pulse {
-            0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.85)}
-        }
+        .live-dot { width: 6px; height: 6px; background: var(--green-dot); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+        .header-src { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
 
         /* ===== BREADCRUMB ===== */
-        .breadcrumb {
-            max-width: 1320px;
-            margin: 0 auto;
-            padding: 12px 24px 0;
-            font-size: 0.72rem;
-            color: var(--text-muted);
-        }
-        .breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color .15s; }
-        .breadcrumb a:hover { color: var(--accent); }
-        .breadcrumb span { margin: 0 6px; opacity: 0.4; }
+        .breadcrumb { max-width:1280px;margin:0 auto;padding:10px 24px 0;font-size:0.72rem;color:var(--text-muted) }
+        .breadcrumb a { color:var(--text-sub);text-decoration:none } .breadcrumb a:hover { color:var(--accent) }
 
         /* ===== CONTAINER ===== */
-        .container {
-            max-width: 1320px;
-            margin: 0 auto;
-            padding: 16px 24px 24px;
-            position: relative;
-            z-index: 1;
-        }
+        .container { max-width:1280px;margin:0 auto;padding:14px 24px 32px }
 
-        /* ===== TOOLBAR ===== */
-        .toolbar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        /* ===== HERO CARD ===== */
+        .hero-card {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            color: white;
             margin-bottom: 14px;
-            flex-wrap: wrap;
-        }
-        .toolbar select {
-            padding: 8px 32px 8px 12px;
-            border: 1px solid var(--border-strong);
-            border-radius: var(--radius-xs);
-            background: var(--bg-card);
-            color: var(--text);
-            font-size: 0.78rem;
-            font-family: var(--font);
-            font-weight: 500;
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237b8ba3' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 10px center;
-            outline: none;
-            transition: border-color .2s, box-shadow .2s;
-        }
-        .toolbar select:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-glow);
-        }
-        .refresh-btn {
-            padding: 8px 16px;
-            border: 1px solid var(--border-strong);
-            border-radius: var(--radius-xs);
-            background: var(--bg-card);
-            color: var(--text);
-            font-size: 0.78rem;
-            font-family: var(--font);
-            font-weight: 500;
-            cursor: pointer;
-            transition: all .2s;
-            display: flex;
+            display: none;
             align-items: center;
-            gap: 6px;
+            gap: 20px;
+            box-shadow: 0 8px 30px rgba(220,38,38,0.2);
+            animation: heroSlide 0.5s ease both;
         }
-        .refresh-btn:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--accent);
-            color: var(--accent);
+        @keyframes heroSlide { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+        .hero-card.visible { display: flex; }
+        .hero-mag {
+            font-family: var(--mono); font-size: 2.8rem; font-weight: 800;
+            line-height: 1; letter-spacing: -0.04em;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            flex-shrink: 0;
         }
-        .refresh-btn:active { transform: scale(0.97); }
-        .refresh-btn svg { width: 13px; height: 13px; }
-        .refresh-btn.spinning svg { animation: spin .8s ease; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        .hero-info { flex: 1; min-width: 0; }
+        .hero-place { font-size: 1.05rem; font-weight: 600; margin-bottom: 2px; }
+        .hero-meta { font-size: 0.8rem; opacity: 0.85; }
+        .hero-timer {
+            font-family: var(--mono); font-size: 1.4rem; font-weight: 700;
+            text-align: right; white-space: nowrap;
+            opacity: 0.95; flex-shrink: 0;
+        }
+        .hero-timer-label { font-size: 0.65rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.05em; font-family: var(--font); font-weight: 500; }
 
-        /* ===== STATS ===== */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 14px;
-        }
+        /* ===== STATS + CHART ROW ===== */
+        .top-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1.5fr; gap: 10px; margin-bottom: 14px; }
         .stat {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 14px 16px;
-            position: relative;
-            overflow: hidden;
-            transition: border-color .2s, transform .2s;
+            background: var(--bg-white); border: 1px solid var(--border);
+            border-radius: var(--radius-sm); padding: 14px 16px;
+            transition: box-shadow .2s, transform .2s;
         }
-        .stat:hover {
-            border-color: var(--border-strong);
-            transform: translateY(-1px);
-        }
-        .stat-val {
-            font-family: var(--mono);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text);
-            display: block;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-        }
-        .stat-lbl {
-            font-size: 0.68rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            font-weight: 600;
-            margin-top: 4px;
-        }
+        .stat:hover { box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+        .stat-val { font-family: var(--mono); font-size: 1.55rem; font-weight: 700; display: block; line-height: 1.1; letter-spacing: -0.03em; }
+        .stat-lbl { font-size: 0.67rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-top: 4px; }
         .stat:nth-child(1) .stat-val { color: var(--accent); }
         .stat:nth-child(2) .stat-val { color: var(--red); }
         .stat:nth-child(3) .stat-val { color: var(--yellow); }
         .stat:nth-child(4) .stat-val { color: var(--green); }
-        .stat::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
+
+        /* Mini hourly chart */
+        .chart-card {
+            background: var(--bg-white); border: 1px solid var(--border);
+            border-radius: var(--radius-sm); padding: 14px 16px;
         }
-        .stat:nth-child(1)::after { background: linear-gradient(90deg, var(--accent), transparent); }
-        .stat:nth-child(2)::after { background: linear-gradient(90deg, var(--red), transparent); }
-        .stat:nth-child(3)::after { background: linear-gradient(90deg, var(--yellow), transparent); }
-        .stat:nth-child(4)::after { background: linear-gradient(90deg, var(--green), transparent); }
+        .chart-title { font-size: 0.67rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-bottom: 8px; }
+        .chart-bars { display: flex; align-items: flex-end; gap: 2px; height: 44px; }
+        .chart-bar {
+            flex: 1; min-width: 0; border-radius: 2px 2px 0 0;
+            background: var(--accent-mid); transition: background .2s;
+            min-height: 2px;
+        }
+        .chart-bar:hover { background: var(--accent); }
+        .chart-bar.active { background: var(--accent); }
+
+        /* ===== TOOLBAR ===== */
+        .toolbar { display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap }
+        .toolbar select {
+            padding:8px 30px 8px 12px;border:1px solid var(--border);border-radius:var(--radius-xs);
+            background:var(--bg-white);color:var(--text);font-size:0.8rem;font-family:var(--font);font-weight:500;
+            cursor:pointer;appearance:none;
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239e9eb8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat:no-repeat;background-position:right 10px center;outline:none;
+            transition:border-color .2s,box-shadow .2s;
+        }
+        .toolbar select:focus { border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light) }
+        .refresh-btn {
+            padding:8px 16px;border:1px solid var(--border);border-radius:var(--radius-xs);
+            background:var(--bg-white);color:var(--text);font-size:0.8rem;font-family:var(--font);
+            font-weight:500;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;
+        }
+        .refresh-btn:hover { border-color:var(--accent);color:var(--accent);background:var(--accent-light) }
+        .refresh-btn:active { transform:scale(0.97) }
+        .refresh-btn svg { width:14px;height:14px }
+        .refresh-btn.spinning svg { animation:spin .8s ease }
+        @keyframes spin { to{transform:rotate(360deg)} }
+
+        .felt-btn {
+            margin-left: auto;
+            padding: 8px 18px; border: 2px solid var(--accent); border-radius: 24px;
+            background: var(--accent-light); color: var(--accent); font-size: 0.8rem;
+            font-family: var(--font); font-weight: 600; cursor: pointer;
+            transition: all .2s; display: flex; align-items: center; gap: 6px;
+        }
+        .felt-btn:hover { background: var(--accent); color: white; transform: scale(1.03); }
+        .felt-btn:active { transform: scale(0.97); }
+        .felt-btn svg { width: 16px; height: 16px; }
+        .felt-btn.clicked { background: var(--accent); color: white; pointer-events: none; }
 
         /* ===== LEGEND ===== */
-        .legend {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-bottom: 14px;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-        .legend-item { display: flex; align-items: center; gap: 5px; }
-        .legend-dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            box-shadow: 0 0 6px currentColor;
-        }
+        .legend { display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px;font-size:0.72rem;color:var(--text-muted);font-weight:500 }
+        .legend-item { display:flex;align-items:center;gap:5px }
+        .legend-dot { width:8px;height:8px;border-radius:50% }
 
         /* ===== DASHBOARD ===== */
-        .dashboard { display: flex; gap: 12px; }
+        .dashboard { display:flex;gap:12px }
         .map-wrap {
-            flex: 5;
-            min-width: 0;
-            height: 540px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
-            position: relative;
+            flex:5;min-width:0;height:540px;background:var(--bg-white);
+            border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
         }
-        #earthquakeMap { height: 100%; width: 100%; }
+        #earthquakeMap { height:100%;width:100% }
 
-        /* Dark map tiles */
-        .leaflet-tile { filter: brightness(0.7) contrast(1.1) saturate(0.3) hue-rotate(180deg) invert(1); }
-        .leaflet-container { background: var(--bg-card); }
-        .leaflet-popup-content-wrapper {
-            background: var(--bg-card) !important;
-            color: var(--text) !important;
-            border-radius: var(--radius-sm) !important;
-            border: 1px solid var(--border-strong) !important;
-            box-shadow: var(--shadow-lg) !important;
-            font-family: var(--font) !important;
-            font-size: 0.8rem !important;
-        }
-        .leaflet-popup-tip { background: var(--bg-card) !important; }
-        .leaflet-popup-content { margin: 12px 14px !important; line-height: 1.6 !important; }
-        .leaflet-popup-content strong { color: var(--text-secondary); font-weight: 500; }
-        .leaflet-control-zoom a {
-            background: var(--bg-card) !important;
-            color: var(--text) !important;
-            border-color: var(--border) !important;
-        }
-        .leaflet-control-zoom a:hover { background: var(--bg-card-hover) !important; }
-        .leaflet-control-attribution {
-            background: rgba(10,15,26,0.7) !important;
-            color: var(--text-muted) !important;
-            font-size: 10px !important;
-        }
-        .leaflet-control-attribution a { color: var(--text-secondary) !important; }
+        .leaflet-popup-content-wrapper { border-radius:var(--radius-sm)!important;box-shadow:var(--shadow-lg)!important;font-family:var(--font)!important }
+        .leaflet-popup-content { margin:14px 16px!important;font-size:0.82rem!important;line-height:1.6!important }
 
-        /* ===== EARTHQUAKE LIST ===== */
+        /* ===== EQ LIST ===== */
         .eq-list {
-            flex: 2;
-            min-width: 300px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            max-height: 540px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
+            flex:2;min-width:300px;background:var(--bg-white);border:1px solid var(--border);
+            border-radius:var(--radius);max-height:540px;overflow-y:auto;
+            display:flex;flex-direction:column;
         }
         .eq-list-header {
-            padding: 14px 16px;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            position: sticky;
-            top: 0;
-            background: var(--bg-card);
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            backdrop-filter: blur(10px);
-        }
-        .eq-list-header::before {
-            content: '';
-            width: 4px;
-            height: 14px;
-            background: var(--accent);
-            border-radius: 2px;
+            padding:14px 18px;border-bottom:1px solid var(--border);font-size:0.76rem;
+            font-weight:600;color:var(--text-sub);text-transform:uppercase;letter-spacing:0.05em;
+            position:sticky;top:0;background:var(--bg-white);z-index:2;
         }
         .eq-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border);
-            cursor: pointer;
-            transition: background .15s;
-            position: relative;
+            display:flex;align-items:center;gap:12px;padding:12px 18px;
+            border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s;position:relative;
         }
-        .eq-item:last-child { border-bottom: none; }
-        .eq-item:hover { background: var(--surface-hover); }
-        .eq-item:hover::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            width: 2px;
-            background: var(--accent);
-        }
+        .eq-item:last-child { border-bottom:none }
+        .eq-item:hover { background:var(--bg); }
 
         .eq-mag {
-            width: 40px; height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--mono);
-            font-weight: 700;
-            font-size: 0.82rem;
-            flex-shrink: 0;
-            position: relative;
+            width:42px;height:42px;border-radius:12px;display:flex;flex-direction:column;
+            align-items:center;justify-content:center;font-family:var(--mono);
+            font-weight:700;font-size:0.85rem;flex-shrink:0;line-height:1;
         }
-        .eq-info { flex: 1; min-width: 0; }
-        .eq-place {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--text);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            line-height: 1.3;
-        }
-        .eq-meta {
-            font-size: 0.68rem;
-            color: var(--text-muted);
-            margin-top: 2px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .eq-meta-sep { width: 3px; height: 3px; background: var(--text-muted); border-radius: 50%; flex-shrink: 0; }
-        .eq-depth-tag {
-            font-family: var(--mono);
-            font-size: 0.62rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 1px 6px;
-            border-radius: 4px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
+        .eq-mag-label { font-size:0.45rem;font-weight:500;opacity:0.7;margin-top:1px;font-family:var(--font);letter-spacing:0.04em }
+        .eq-info { flex:1;min-width:0 }
+        .eq-place { font-size:0.82rem;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3 }
+        .eq-meta { font-size:0.7rem;color:var(--text-muted);margin-top:2px;display:flex;align-items:center;gap:6px }
+        .eq-depth { font-family:var(--mono);font-size:0.65rem;background:var(--bg);border:1px solid var(--border);padding:1px 7px;border-radius:5px;color:var(--text-sub);font-weight:500 }
+        .eq-time-ago { color:var(--text-muted) }
 
-        .loading {
-            text-align: center;
-            padding: 48px 16px;
-            color: var(--text-muted);
-            font-size: 0.82rem;
-        }
-        .loading-spinner {
-            width: 28px; height: 28px;
-            border: 2px solid var(--border);
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 12px;
-        }
-        .error {
-            color: var(--red);
-            padding: 24px;
-            text-align: center;
-            font-size: 0.82rem;
-        }
+        /* Strong quake shake animation */
+        .eq-item.strong { animation: microShake 0.4s ease; }
+        @keyframes microShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-2px)} 75%{transform:translateX(2px)} }
 
-        /* ===== SCROLLBAR ===== */
-        .eq-list::-webkit-scrollbar { width: 5px; }
-        .eq-list::-webkit-scrollbar-track { background: transparent; }
-        .eq-list::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
-        .eq-list::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+        .loading { text-align:center;padding:48px 16px;color:var(--text-muted);font-size:0.82rem }
+        .loading-spinner { width:28px;height:28px;border:2.5px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 12px }
+        .error { color:var(--red);padding:24px;text-align:center;font-size:0.82rem }
+
+        .eq-list::-webkit-scrollbar { width:5px }
+        .eq-list::-webkit-scrollbar-track { background:transparent }
+        .eq-list::-webkit-scrollbar-thumb { background:var(--border);border-radius:4px }
 
         /* ===== İL LİSTESİ ===== */
-        .il-section { margin-top: 20px; }
-        .il-section-title {
-            font-size: 0.72rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 10px;
-        }
-        #ilListesi { display: flex; flex-wrap: wrap; gap: 5px; }
+        .il-section { margin-top:20px }
+        .il-section-title { font-size:0.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px }
+        #ilListesi { display:flex;flex-wrap:wrap;gap:5px }
         #ilListesi a {
-            font-size: 0.68rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-xs);
-            padding: 4px 10px;
-            text-decoration: none;
-            transition: all .15s;
-            white-space: nowrap;
+            font-size:0.7rem;font-weight:500;color:var(--text-sub);background:var(--bg-white);
+            border:1px solid var(--border);border-radius:var(--radius-xs);padding:4px 11px;
+            text-decoration:none;transition:all .15s;
         }
-        #ilListesi a:hover {
-            color: var(--accent);
-            border-color: rgba(59,130,246,0.3);
-            background: var(--accent-glow);
-            transform: translateY(-1px);
-        }
+        #ilListesi a:hover { color:var(--accent);border-color:var(--accent-mid);background:var(--accent-light);transform:translateY(-1px) }
 
         /* ===== SEO CONTENT ===== */
-        .seo-content {
-            max-width: 1320px;
-            margin: 20px auto 0;
-            padding: 0 24px;
+        .seo-content { max-width:1280px;margin:24px auto 0;padding:0 24px }
+        .info-section { background:var(--bg-white);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:12px }
+        .info-section h2 { font-size:1.05rem;font-weight:700;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border) }
+        .info-section h3 { font-size:0.9rem;font-weight:600;margin:16px 0 6px }
+        .info-section p { color:var(--text-sub);font-size:0.84rem;line-height:1.7;margin-bottom:8px }
+        .faq-item { border-bottom:1px solid var(--border);padding:12px 0 }
+        .faq-item:last-child { border-bottom:none }
+        .faq-item summary { cursor:pointer;font-weight:600;font-size:0.88rem;padding:4px 0;transition:color .15s;list-style:none;display:flex;align-items:center;justify-content:space-between }
+        .faq-item summary::after { content:'+';font-size:1.1rem;color:var(--text-muted);font-weight:400 }
+        .faq-item[open] summary::after { content:'−';color:var(--accent) }
+        .faq-item summary::-webkit-details-marker { display:none }
+        .faq-item summary:hover { color:var(--accent) }
+        .faq-item p { margin-top:8px }
+
+        /* ===== COMMUNITY CHAT ===== */
+        .chat-section { margin-top: 20px; }
+        .chat-box {
+            background: var(--bg-white); border: 1px solid var(--border);
+            border-radius: var(--radius); overflow: hidden;
         }
-        .info-section {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 24px 28px;
-            margin-bottom: 12px;
+        .chat-header {
+            padding: 14px 20px; border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between;
         }
-        .info-section h2 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 12px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .chat-header-left { display: flex; align-items: center; gap: 10px; }
+        .chat-header-icon {
+            width: 32px; height: 32px; border-radius: 10px;
+            background: var(--blue-light); color: var(--blue);
+            display: flex; align-items: center; justify-content: center;
         }
-        .info-section h2::before {
-            content: '';
-            width: 4px;
-            height: 18px;
-            background: var(--accent);
-            border-radius: 2px;
+        .chat-header-icon svg { width: 16px; height: 16px; }
+        .chat-header h3 { font-size: 0.9rem; font-weight: 700; }
+        .chat-header-sub { font-size: 0.7rem; color: var(--text-muted); font-weight: 500; }
+        .chat-online {
+            display: flex; align-items: center; gap: 5px;
+            font-size: 0.7rem; color: var(--green); font-weight: 600;
         }
-        .info-section h3 {
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--text);
-            margin: 16px 0 6px;
+        .chat-online-dot { width: 6px; height: 6px; background: var(--green-dot); border-radius: 50%; animation: pulse 2s infinite; }
+
+        .chat-messages {
+            height: 320px; overflow-y: auto; padding: 16px 20px;
+            display: flex; flex-direction: column; gap: 6px;
+            background: var(--bg-warm);
         }
-        .info-section p {
-            color: var(--text-secondary);
-            font-size: 0.82rem;
-            line-height: 1.7;
-            margin-bottom: 8px;
+        .chat-messages::-webkit-scrollbar { width: 4px; }
+        .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+        .chat-msg {
+            display: flex; gap: 10px; align-items: flex-start;
+            animation: msgIn 0.3s ease both;
         }
-        .faq-item {
-            border-bottom: 1px solid var(--border);
-            padding: 12px 0;
+        @keyframes msgIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+        .chat-avatar {
+            width: 30px; height: 30px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.65rem; font-weight: 700; color: white;
+            flex-shrink: 0; text-transform: uppercase;
         }
-        .faq-item:last-child { border-bottom: none; }
-        .faq-item summary {
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--text);
-            font-size: 0.85rem;
-            padding: 4px 0;
-            transition: color .15s;
-            list-style: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .chat-bubble {
+            background: var(--bg-white); border: 1px solid var(--border);
+            border-radius: 4px 14px 14px 14px; padding: 8px 14px;
+            max-width: 80%; position: relative;
         }
-        .faq-item summary::after {
-            content: '+';
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            transition: transform .2s;
-            font-weight: 400;
+        .chat-msg.self .chat-bubble {
+            background: var(--accent); color: white; border-color: var(--accent);
+            border-radius: 14px 4px 14px 14px; margin-left: auto;
         }
-        .faq-item[open] summary::after {
-            content: '−';
-            color: var(--accent);
+        .chat-msg.self { flex-direction: row-reverse; }
+        .chat-msg-name { font-size: 0.65rem; font-weight: 600; color: var(--text-sub); margin-bottom: 1px; }
+        .chat-msg.self .chat-msg-name { color: rgba(255,255,255,0.75); }
+        .chat-msg-text { font-size: 0.82rem; line-height: 1.45; }
+        .chat-msg-time { font-size: 0.58rem; color: var(--text-muted); margin-top: 2px; }
+        .chat-msg.self .chat-msg-time { color: rgba(255,255,255,0.6); }
+
+        .chat-msg.system {
+            justify-content: center; gap: 0;
         }
-        .faq-item summary::-webkit-details-marker { display: none; }
-        .faq-item summary:hover { color: var(--accent); }
-        .faq-item p { margin-top: 8px; }
+        .chat-msg.system .chat-bubble {
+            background: transparent; border: none; text-align: center;
+            font-size: 0.7rem; color: var(--text-muted); padding: 4px 12px;
+            max-width: 100%; border-radius: 8px;
+        }
+
+        .chat-input-area {
+            padding: 12px 16px; border-top: 1px solid var(--border);
+            display: flex; gap: 8px; align-items: center;
+            background: var(--bg-white);
+        }
+        .chat-input {
+            flex: 1; padding: 10px 16px; border: 1px solid var(--border);
+            border-radius: 24px; font-size: 0.84rem; font-family: var(--font);
+            outline: none; background: var(--bg); color: var(--text);
+            transition: border-color .2s, box-shadow .2s;
+        }
+        .chat-input::placeholder { color: var(--text-muted); }
+        .chat-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+        .chat-send {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--accent); color: white; border: none;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: transform .15s, background .15s; flex-shrink: 0;
+        }
+        .chat-send:hover { background: #c81e2e; transform: scale(1.05); }
+        .chat-send:active { transform: scale(0.95); }
+        .chat-send:disabled { background: var(--border); cursor: default; transform: none; }
+        .chat-send svg { width: 18px; height: 18px; }
+
+        .chat-name-prompt {
+            padding: 20px; text-align: center; display: flex;
+            flex-direction: column; align-items: center; gap: 10px;
+            background: var(--bg-warm); min-height: 320px; justify-content: center;
+        }
+        .chat-name-prompt p { font-size: 0.9rem; color: var(--text-sub); font-weight: 500; }
+        .chat-name-row { display: flex; gap: 8px; width: 100%; max-width: 320px; }
+        .chat-name-input {
+            flex: 1; padding: 10px 16px; border: 1px solid var(--border);
+            border-radius: 10px; font-size: 0.85rem; font-family: var(--font);
+            outline: none; text-align: center;
+        }
+        .chat-name-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+        .chat-name-btn {
+            padding: 10px 20px; border-radius: 10px; border: none;
+            background: var(--accent); color: white; font-family: var(--font);
+            font-weight: 600; font-size: 0.85rem; cursor: pointer;
+            transition: background .15s;
+        }
+        .chat-name-btn:hover { background: #c81e2e; }
+
+        .chat-rules {
+            font-size: 0.65rem; color: var(--text-muted); padding: 0 20px 8px;
+            text-align: center; background: var(--bg-white);
+        }
 
         /* ===== FOOTER ===== */
-        .site-footer {
-            border-top: 1px solid var(--border);
-            text-align: center;
-            padding: 24px;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-top: 30px;
-        }
-        .site-footer a { color: var(--text-secondary); text-decoration: none; transition: color .15s; }
-        .site-footer a:hover { color: var(--accent); }
-        .site-footer p { margin: 3px 0; }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeInUp {
-            from { opacity:0; transform:translateY(12px); }
-            to { opacity:1; transform:translateY(0); }
-        }
-        .stats-row { animation: fadeInUp .4s ease both; animation-delay: .1s; }
-        .dashboard { animation: fadeInUp .4s ease both; animation-delay: .2s; }
-        .toolbar { animation: fadeInUp .4s ease both; }
+        .site-footer { border-top:1px solid var(--border);text-align:center;padding:24px;font-size:0.72rem;color:var(--text-muted);margin-top:32px }
+        .site-footer a { color:var(--text-sub);text-decoration:none } .site-footer a:hover { color:var(--accent) }
+        .site-footer p { margin:3px 0 }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 900px) {
-            .dashboard { flex-direction: column; }
-            .map-wrap { height: 350px; }
-            .eq-list { max-height: 400px; min-width: 0; }
+        @media (max-width:1024px) { .top-row { grid-template-columns:repeat(2,1fr) } .chart-card { grid-column: span 2 } }
+        @media (max-width:900px) {
+            .dashboard { flex-direction:column }
+            .map-wrap { height:350px }
+            .eq-list { max-height:420px;min-width:0 }
         }
-        @media (max-width: 640px) {
-            .header-inner { height: 50px; }
-            .header-inner h1 { font-size: 0.92rem; }
-            .header-meta { display: none; }
-            .stats-row { grid-template-columns: repeat(2, 1fr); }
-            .stat-val { font-size: 1.2rem; }
-            .container { padding: 12px 14px 20px; }
-            .map-wrap { height: 280px; border-radius: var(--radius-sm); }
-            .eq-list { border-radius: var(--radius-sm); }
-            .info-section { padding: 18px; }
-            .toolbar { gap: 6px; }
+        @media (max-width:640px) {
+            .header-inner { height:50px }
+            .header-inner h1 { font-size:0.95rem }
+            .header-src { display:none }
+            .top-row { grid-template-columns:repeat(2,1fr);gap:8px }
+            .chart-card { grid-column:span 2 }
+            .container { padding:10px 14px 24px }
+            .hero-card { flex-direction:column;text-align:center;gap:10px;padding:18px }
+            .hero-mag { font-size:2.2rem }
+            .hero-timer { text-align:center }
+            .felt-btn { margin-left:0 }
+            .info-section { padding:18px }
         }
-
         @media print {
-            .site-header, .toolbar, .site-footer, .map-wrap, .legend { display: none; }
-            .eq-list { max-height: none; }
-            body { background: #fff; color: #000; }
+            .site-header,.toolbar,.site-footer,.map-wrap,.legend,.hero-card { display:none }
+            .eq-list { max-height:none }
         }
     </style>
 </head>
 <body>
-    <a class="skip-link" href="#son-depremler">Ana içeriğe atla</a>
-
-    <header class="site-header" role="banner">
+    <header class="site-header">
         <div class="header-inner">
             <div class="header-brand">
                 <div class="header-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                 </div>
                 <h1>Son Depremler</h1>
             </div>
             <div class="header-right">
-                <div class="live-badge">
-                    <span class="live-dot"></span>
-                    Canlı
-                </div>
-                <div class="header-meta">AFAD Verileri</div>
+                <div class="live-badge"><span class="live-dot"></span> Canlı</div>
+                <span class="header-src">AFAD Verileri</span>
             </div>
         </div>
     </header>
 
     <nav class="breadcrumb" aria-label="Sayfa yolu">
-        <a href="/">Ana Sayfa</a><span>›</span><strong style="color:var(--text-secondary)">Son Depremler</strong>
+        <a href="/">Ana Sayfa</a> › <strong>Son Depremler</strong>
     </nav>
 
     <main id="son-depremler">
         <div class="container">
 
-            <div class="toolbar" role="search" aria-label="Deprem filtreleme">
-                <label for="timeRange" class="sr-only">Zaman aralığı seçin</label>
-                <select id="timeRange" aria-label="Zaman aralığı">
-                    <option value="1">Son 1 Saat</option>
-                    <option value="24" selected>Son 24 Saat</option>
-                    <option value="168">Son 1 Hafta</option>
-                    <option value="720">Son 1 Ay</option>
-                </select>
+            <!-- Hero: Son büyük deprem -->
+            <div class="hero-card" id="heroCard">
+                <div class="hero-mag" id="heroMag">—</div>
+                <div class="hero-info">
+                    <div class="hero-place" id="heroPlace">—</div>
+                    <div class="hero-meta" id="heroMeta">—</div>
+                </div>
+                <div style="text-align:right">
+                    <div class="hero-timer" id="heroTimer">—</div>
+                    <div class="hero-timer-label">önce gerçekleşti</div>
+                </div>
+            </div>
 
-                <label for="minMagnitude" class="sr-only">Minimum büyüklük seçin</label>
-                <select id="minMagnitude" aria-label="Minimum büyüklük">
-                    <option value="0">Tüm Büyüklükler</option>
-                    <option value="1">M 1.0+</option>
-                    <option value="2">M 2.0+</option>
-                    <option value="3">M 3.0+</option>
-                    <option value="4">M 4.0+</option>
-                </select>
+            <!-- Stats + Chart -->
+            <div class="top-row">
+                <div class="stat"><span class="stat-val" id="totalCount">—</span><span class="stat-lbl">Toplam Deprem</span></div>
+                <div class="stat"><span class="stat-val" id="maxMag">—</span><span class="stat-lbl">En Büyük (M)</span></div>
+                <div class="stat"><span class="stat-val" id="avgDepth">—</span><span class="stat-lbl">Ort. Derinlik</span></div>
+                <div class="stat"><span class="stat-val" id="last24hCount">—</span><span class="stat-lbl">Son 24 Saat</span></div>
+                <div class="chart-card">
+                    <div class="chart-title">Son 24 Saat — Saatlik Deprem Sayısı</div>
+                    <div class="chart-bars" id="hourlyChart"></div>
+                </div>
+            </div>
 
-                <button class="refresh-btn" id="refreshBtn" aria-label="Deprem verilerini yenile">
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <select id="timeRange"><option value="1">Son 1 Saat</option><option value="24" selected>Son 24 Saat</option><option value="168">Son 1 Hafta</option><option value="720">Son 1 Ay</option></select>
+                <select id="minMagnitude"><option value="0">Tüm Büyüklükler</option><option value="1">M 1.0+</option><option value="2">M 2.0+</option><option value="3">M 3.0+</option><option value="4">M 4.0+</option></select>
+                <button class="refresh-btn" id="refreshBtn">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
                     Yenile
                 </button>
+                <button class="felt-btn" id="feltBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg>
+                    Deprem Hissettim!
+                </button>
             </div>
 
-            <div class="stats-row" role="region" aria-label="Deprem istatistikleri">
-                <div class="stat">
-                    <span class="stat-val" id="totalCount">—</span>
-                    <span class="stat-lbl">Toplam Deprem</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-val" id="maxMag">—</span>
-                    <span class="stat-lbl">En Büyük (M)</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-val" id="avgDepth">—</span>
-                    <span class="stat-lbl">Ort. Derinlik (km)</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-val" id="last24hCount">—</span>
-                    <span class="stat-lbl">Son 24 Saat</span>
-                </div>
+            <div class="legend">
+                <div class="legend-item"><span class="legend-dot" style="background:#059669"></span> &lt;1.0</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#65a30d"></span> 1–2</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#d97706"></span> 2–3</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#ea580c"></span> 3–4</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#dc2626"></span> 4+</div>
             </div>
 
-            <div class="legend" role="img" aria-label="Deprem büyüklük renk skalası">
-                <div class="legend-item"><span class="legend-dot" style="color:var(--green);background:var(--green)"></span> &lt;1.0</div>
-                <div class="legend-item"><span class="legend-dot" style="color:var(--lime);background:var(--lime)"></span> 1–2</div>
-                <div class="legend-item"><span class="legend-dot" style="color:var(--yellow);background:var(--yellow)"></span> 2–3</div>
-                <div class="legend-item"><span class="legend-dot" style="color:var(--orange);background:var(--orange)"></span> 3–4</div>
-                <div class="legend-item"><span class="legend-dot" style="color:var(--red);background:var(--red)"></span> 4+</div>
-            </div>
-
-            <section class="dashboard" aria-label="Deprem haritası ve listesi">
-                <div class="map-wrap" role="application" aria-label="Türkiye deprem haritası">
-                    <div id="earthquakeMap"></div>
-                </div>
-
-                <div class="eq-list" id="earthquakeList" role="feed" aria-label="Son deprem listesi" aria-live="polite">
+            <section class="dashboard">
+                <div class="map-wrap"><div id="earthquakeMap"></div></div>
+                <div class="eq-list" id="earthquakeList">
                     <div class="eq-list-header">Son Depremler</div>
-                    <div class="loading" aria-busy="true">
-                        <div class="loading-spinner"></div>
-                        Veriler yükleniyor...
+                    <div class="loading"><div class="loading-spinner"></div>Veriler yükleniyor...</div>
+                </div>
+            </section>
+
+            <section class="il-section">
+                <div class="il-section-title">İl Bazında Depremler</div>
+                <div id="ilListesi"></div>
+            </section>
+
+            <!-- Community Chat -->
+            <section class="chat-section">
+                <div class="chat-box">
+                    <div class="chat-header">
+                        <div class="chat-header-left">
+                            <div class="chat-header-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            </div>
+                            <div>
+                                <h3>Canlı Sohbet</h3>
+                                <span class="chat-header-sub">Deprem hakkında konuşun</span>
+                            </div>
+                        </div>
+                        <div class="chat-online">
+                            <span class="chat-online-dot"></span>
+                            <span id="onlineCount">—</span> çevrimiçi
+                        </div>
+                    </div>
+
+                    <div id="chatArea">
+                        <!-- Name prompt (shown first) -->
+                        <div class="chat-name-prompt" id="chatNamePrompt">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9e9eb8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            <p>Sohbete katılmak için bir takma ad seçin</p>
+                            <div class="chat-name-row">
+                                <input type="text" class="chat-name-input" id="chatNameInput" placeholder="Takma adınız..." maxlength="20" autocomplete="off">
+                                <button class="chat-name-btn" id="chatNameBtn">Katıl</button>
+                            </div>
+                        </div>
+
+                        <!-- Chat area (hidden until name entered) -->
+                        <div id="chatMain" style="display:none">
+                            <div class="chat-messages" id="chatMessages"></div>
+                            <div class="chat-rules">Saygılı olun. Kişisel bilgi paylaşmayın. Panik yaratacak asılsız bilgi yazmayın.</div>
+                            <div class="chat-input-area">
+                                <input type="text" class="chat-input" id="chatInput" placeholder="Mesajınızı yazın..." maxlength="300" autocomplete="off">
+                                <button class="chat-send" id="chatSendBtn" disabled>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="il-section" aria-label="İllere göre deprem listesi">
-                <div class="il-section-title">İl Bazında Depremler</div>
-                <div id="ilListesi"></div>
-            </section>
         </div>
 
         <div class="seo-content">
             <section class="info-section">
                 <h2>Türkiye Deprem Haritası Hakkında</h2>
-                <p>Bu sayfa, Türkiye ve yakın çevresinde meydana gelen son depremleri anlık olarak canlı harita üzerinde göstermektedir. Deprem verileri AFAD (Afet ve Acil Durum Yönetimi Başkanlığı) kaynaklı API'den otomatik olarak çekilmekte ve güncellenebilmektedir.</p>
-
+                <p>Bu sayfa, Türkiye ve yakın çevresinde meydana gelen son depremleri anlık olarak canlı harita üzerinde göstermektedir. Deprem verileri AFAD kaynaklı API'den otomatik olarak çekilmekte ve güncellenebilmektedir.</p>
                 <h3>Deprem Verileri Nasıl Okunur?</h3>
-                <p>Haritadaki her bir işaretçi bir depremi temsil eder. İşaretçinin rengi ve büyüklüğü, depremin magnitüdüne göre değişir. Yeşil tonlar hafif depremleri, sarı orta şiddetteki depremleri, turuncu ve kırmızı ise kuvvetli depremleri gösterir. İşaretçilere tıklayarak deprem detaylarını görüntüleyebilirsiniz.</p>
-
+                <p>Haritadaki her işaretçi bir depremi temsil eder. Rengi ve büyüklüğü magnitüdüne göre değişir. İşaretçilere tıklayarak deprem detaylarını görüntüleyebilirsiniz.</p>
                 <h3>Deprem Büyüklüğü (Magnitüd) Nedir?</h3>
-                <p>Deprem büyüklüğü, bir depremin serbest bıraktığı enerji miktarını ölçen sayısal bir değerdir. Richter ölçeğinde her bir tam sayı artışı, yaklaşık 31,6 kat daha fazla enerji anlamına gelir. 2.0 altındaki depremler genellikle hissedilmezken, 4.0 ve üzeri depremler geniş alanlarda hissedilebilir ve hasar verebilir.</p>
+                <p>Deprem büyüklüğü, depremin serbest bıraktığı enerjiyi ölçer. Her tam sayı artışı yaklaşık 31,6 kat fazla enerji demektir.</p>
             </section>
-
             <section class="info-section" id="sss">
                 <h2>Sıkça Sorulan Sorular</h2>
-
-                <details class="faq-item">
-                    <summary>Bugün Türkiye'de deprem oldu mu?</summary>
-                    <p>Türkiye'deki güncel deprem verilerini yukarıdaki canlı harita ve deprem listesi üzerinden anlık olarak takip edebilirsiniz. Zaman filtrelerini kullanarak son 1 saat, 24 saat, 1 hafta veya 1 aylık verileri görebilirsiniz.</p>
-                </details>
-
-                <details class="faq-item">
-                    <summary>Deprem verileri nereden alınmaktadır?</summary>
-                    <p>Deprem verileri AFAD (Afet ve Acil Durum Yönetimi Başkanlığı) kaynaklı API üzerinden anlık olarak çekilmektedir. Veriler düzenli aralıklarla güncellenir.</p>
-                </details>
-
-                <details class="faq-item">
-                    <summary>Hangi depremleri görebilirim?</summary>
-                    <p>Büyüklük filtresini kullanarak tüm depremlerden sadece belirli büyüklükteki depremlere kadar filtreleme yapabilirsiniz. Haritada Türkiye ve yakın çevresindeki tüm depremler gösterilir.</p>
-                </details>
-
-                <details class="faq-item">
-                    <summary>Deprem büyüklüğü renkleri ne anlama gelir?</summary>
-                    <p>Yeşil: Çok hafif depremler (M &lt; 1.0), Açık yeşil: Hafif depremler (M 1.0–2.0), Sarı: Orta şiddetli depremler (M 2.0–3.0), Turuncu: Kuvvetli depremler (M 3.0–4.0), Kırmızı: Çok kuvvetli depremler (M 4.0+).</p>
-                </details>
+                <details class="faq-item"><summary>Bugün Türkiye'de deprem oldu mu?</summary><p>Yukarıdaki canlı harita ve listeden anlık takip edebilirsiniz.</p></details>
+                <details class="faq-item"><summary>Deprem verileri nereden alınmaktadır?</summary><p>AFAD API üzerinden anlık çekilmektedir.</p></details>
+                <details class="faq-item"><summary>Hangi depremleri görebilirim?</summary><p>Filtreler ile büyüklük ve zaman aralığına göre filtreleyebilirsiniz.</p></details>
+                <details class="faq-item"><summary>Deprem renkleri ne anlama gelir?</summary><p>Yeşil: &lt;1.0, Açık yeşil: 1–2, Sarı: 2–3, Turuncu: 3–4, Kırmızı: 4+.</p></details>
             </section>
         </div>
     </main>
 
-    <footer class="site-footer" role="contentinfo">
-        <p>Son güncelleme: <time id="lastUpdated" datetime="">—</time></p>
+    <footer class="site-footer">
+        <p>Son güncelleme: <time id="lastUpdated">—</time></p>
         <p>Veri kaynağı: <a href="https://deprem.afad.gov.tr" target="_blank" rel="noopener">AFAD</a> · Afet ve Acil Durum Yönetimi Başkanlığı</p>
         <p>&copy; <span id="currentYear">2026</span> Son Depremler Türkiye</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
     <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        const map = L.map('earthquakeMap', {
-            center: [39, 35],
-            zoom: 6,
-            zoomControl: true,
-            attributionControl: true
+    const map = L.map('earthquakeMap',{center:[39,35],zoom:6,zoomControl:true,attributionControl:true});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap'}).addTo(map);
+    const markers = L.layerGroup().addTo(map);
+
+    function magColor(m){m=+m;if(m<1)return'#059669';if(m<2)return'#65a30d';if(m<3)return'#d97706';if(m<4)return'#ea580c';return'#dc2626'}
+    function magBg(m){m=+m;if(m<1)return'#ecfdf5';if(m<2)return'#f7fee7';if(m<3)return'#fffbeb';if(m<4)return'#fff7ed';return'#fef2f2'}
+    function magSize(m){return Math.max(+m*3.5,4)}
+    function timeAgo(t){const s=Math.floor((Date.now()-t)/1000);if(s<60)return'Az önce';const m=Math.floor(s/60);if(m<60)return m+' dk önce';const h=Math.floor(m/60);if(h<24)return h+' saat önce';return Math.floor(h/24)+' gün önce'}
+    function fmtTimer(t){const s=Math.max(0,Math.floor((Date.now()-t)/1000));const h=Math.floor(s/3600);const m=Math.floor((s%3600)/60);const sec=s%60;return(h?h+'s ':'')+(m<10?'0':'')+m+'dk '+(sec<10?'0':'')+sec+'sn'}
+
+    let heroTime=null;
+    function tickHero(){if(!heroTime)return;document.getElementById('heroTimer').textContent=fmtTimer(heroTime)}
+    setInterval(tickHero,1000);
+
+    async function fetchAFADData(hours,minMag){
+        try{
+            const r=await fetch("https://hasanadiguzel.com.tr/api/sondepremler");
+            if(!r.ok)throw new Error(r.status);
+            const j=await r.json();
+            return{type:"FeatureCollection",features:j.data.filter(e=>+e.ml>=+minMag).map(e=>{
+                const dt=`${e.tarih}T${e.saat}`.replace(/\./g,'-');
+                return{type:"Feature",properties:{mag:+e.ml,place:e.yer,time:new Date(dt).getTime(),depth:+e.derinlik_km},geometry:{type:"Point",coordinates:[+e.boylam_e,+e.enlem_n,+e.derinlik_km]}};
+            })};
+        }catch(e){console.error(e);return{features:[]};}
+    }
+
+    function buildHourlyChart(features){
+        const chart=document.getElementById('hourlyChart');
+        chart.innerHTML='';
+        const now=Date.now();const bins=Array(24).fill(0);
+        features.forEach(f=>{const h=Math.floor((now-f.properties.time)/3600000);if(h>=0&&h<24)bins[23-h]++});
+        const max=Math.max(...bins,1);
+        bins.forEach((c,i)=>{
+            const bar=document.createElement('div');
+            bar.className='chart-bar'+(i===23?' active':'');
+            bar.style.height=Math.max((c/max)*100,4)+'%';
+            bar.title=(i===23?'Bu saat':23-i+' saat önce')+': '+c+' deprem';
+            chart.appendChild(bar);
         });
+    }
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
+    function updateHero(features){
+        const big=features.filter(f=>f.properties.mag>=3).sort((a,b)=>b.properties.time-a.properties.time)[0];
+        const card=document.getElementById('heroCard');
+        if(!big){card.classList.remove('visible');heroTime=null;return}
+        card.classList.add('visible');
+        document.getElementById('heroMag').textContent=big.properties.mag.toFixed(1);
+        document.getElementById('heroPlace').textContent=big.properties.place;
+        document.getElementById('heroMeta').textContent='Derinlik: '+big.properties.depth.toFixed(1)+' km · '+new Date(big.properties.time).toLocaleString('tr-TR');
+        heroTime=big.properties.time;
+        tickHero();
+    }
 
-        const markers = L.layerGroup().addTo(map);
+    function updateStats(eq){
+        if(!eq?.features?.length){['totalCount','maxMag','avgDepth','last24hCount'].forEach(id=>document.getElementById(id).textContent=id==='totalCount'||id==='last24hCount'?'0':'—');return}
+        const f=eq.features,mags=f.map(x=>x.properties.mag),depths=f.map(x=>x.properties.depth);
+        document.getElementById('totalCount').textContent=f.length;
+        document.getElementById('maxMag').textContent=Math.max(...mags).toFixed(1);
+        document.getElementById('avgDepth').textContent=(depths.reduce((a,b)=>a+b,0)/depths.length).toFixed(1);
+        document.getElementById('last24hCount').textContent=f.filter(x=>x.properties.time>Date.now()-86400000).length;
+    }
 
-        function getMagnitudeColor(mag) {
-            mag = parseFloat(mag);
-            if (mag < 1) return '#10b981';
-            if (mag < 2) return '#84cc16';
-            if (mag < 3) return '#f59e0b';
-            if (mag < 4) return '#f97316';
-            return '#ef4444';
+    function display(eq){
+        markers.clearLayers();
+        const lc=document.getElementById('earthquakeList');
+        lc.innerHTML='<div class="eq-list-header">Son Depremler</div>';
+        if(!eq?.features?.length){lc.innerHTML+='<div class="error">Deprem bulunamadı.</div>';updateStats(null);return}
+        eq.features.sort((a,b)=>b.properties.time-a.properties.time);
+        updateStats(eq);updateHero(eq.features);buildHourlyChart(eq.features);
+        eq.features.forEach((q,i)=>{
+            const{mag,place,time,depth}=q.properties;
+            const[lon,lat]=q.geometry.coordinates;const c=magColor(mag);
+            const mk=L.circleMarker([lat,lon],{radius:magSize(mag),fillColor:c,color:c,weight:1.5,opacity:0.8,fillOpacity:0.45}).addTo(markers);
+            mk.bindPopup(`<div style="font-family:'Outfit',sans-serif"><div style="font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;color:${c}">${mag.toFixed(1)}</div><div style="font-weight:600;margin:4px 0">${place}</div><div style="color:#64648c;font-size:0.8rem">Derinlik: ${depth.toFixed(1)} km<br>${new Date(time).toLocaleString('tr-TR')}</div></div>`);
+            const el=document.createElement('article');
+            el.className='eq-item'+(mag>=4?' strong':'');
+            el.innerHTML=`
+                <span class="eq-mag" style="background:${magBg(mag)};color:${c}"><span>${mag.toFixed(1)}</span><span class="eq-mag-label">MAG</span></span>
+                <div class="eq-info">
+                    <div class="eq-place" title="${place}">${place}</div>
+                    <div class="eq-meta"><span class="eq-time-ago">${timeAgo(time)}</span><span class="eq-depth">${depth.toFixed(1)} km</span></div>
+                </div>`;
+            el.onclick=()=>{map.setView([lat,lon],8,{animate:true,duration:0.5});mk.openPopup()};
+            lc.appendChild(el);
+        });
+        const now=new Date();const el=document.getElementById('lastUpdated');
+        el.textContent=now.toLocaleString('tr-TR');el.setAttribute('datetime',now.toISOString());
+    }
+
+    // İl listesi
+    const IL=[{ad:'Adana',s:'adana'},{ad:'Adıyaman',s:'adiyaman'},{ad:'Afyonkarahisar',s:'afyonkarahisar'},{ad:'Ağrı',s:'agri'},{ad:'Aksaray',s:'aksaray'},{ad:'Amasya',s:'amasya'},{ad:'Ankara',s:'ankara'},{ad:'Antalya',s:'antalya'},{ad:'Ardahan',s:'ardahan'},{ad:'Artvin',s:'artvin'},{ad:'Aydın',s:'aydin'},{ad:'Balıkesir',s:'balikesir'},{ad:'Bartın',s:'bartin'},{ad:'Batman',s:'batman'},{ad:'Bayburt',s:'bayburt'},{ad:'Bilecik',s:'bilecik'},{ad:'Bingöl',s:'bingol'},{ad:'Bitlis',s:'bitlis'},{ad:'Bolu',s:'bolu'},{ad:'Burdur',s:'burdur'},{ad:'Bursa',s:'bursa'},{ad:'Çanakkale',s:'canakkale'},{ad:'Çankırı',s:'cankiri'},{ad:'Çorum',s:'corum'},{ad:'Denizli',s:'denizli'},{ad:'Diyarbakır',s:'diyarbakir'},{ad:'Düzce',s:'duzce'},{ad:'Edirne',s:'edirne'},{ad:'Elazığ',s:'elazig'},{ad:'Erzincan',s:'erzincan'},{ad:'Erzurum',s:'erzurum'},{ad:'Eskişehir',s:'eskisehir'},{ad:'Gaziantep',s:'gaziantep'},{ad:'Giresun',s:'giresun'},{ad:'Gümüşhane',s:'gumushane'},{ad:'Hakkari',s:'hakkari'},{ad:'Hatay',s:'hatay'},{ad:'Iğdır',s:'igdir'},{ad:'Isparta',s:'isparta'},{ad:'İstanbul',s:'istanbul'},{ad:'İzmir',s:'izmir'},{ad:'Kahramanmaraş',s:'kahramanmaras'},{ad:'Karabük',s:'karabuk'},{ad:'Karaman',s:'karaman'},{ad:'Kars',s:'kars'},{ad:'Kastamonu',s:'kastamonu'},{ad:'Kayseri',s:'kayseri'},{ad:'Kırıkkale',s:'kirikkale'},{ad:'Kırklareli',s:'kirklareli'},{ad:'Kırşehir',s:'kirsehir'},{ad:'Kilis',s:'kilis'},{ad:'Kocaeli',s:'kocaeli'},{ad:'Konya',s:'konya'},{ad:'Kütahya',s:'kutahya'},{ad:'Malatya',s:'malatya'},{ad:'Manisa',s:'manisa'},{ad:'Mardin',s:'mardin'},{ad:'Mersin',s:'mersin'},{ad:'Muğla',s:'mugla'},{ad:'Muş',s:'mus'},{ad:'Nevşehir',s:'nevsehir'},{ad:'Niğde',s:'nigde'},{ad:'Ordu',s:'ordu'},{ad:'Osmaniye',s:'osmaniye'},{ad:'Rize',s:'rize'},{ad:'Sakarya',s:'sakarya'},{ad:'Samsun',s:'samsun'},{ad:'Siirt',s:'siirt'},{ad:'Sinop',s:'sinop'},{ad:'Sivas',s:'sivas'},{ad:'Şanlıurfa',s:'sanliurfa'},{ad:'Şırnak',s:'sirnak'},{ad:'Tekirdağ',s:'tekirdag'},{ad:'Tokat',s:'tokat'},{ad:'Trabzon',s:'trabzon'},{ad:'Tunceli',s:'tunceli'},{ad:'Uşak',s:'usak'},{ad:'Van',s:'van'},{ad:'Yalova',s:'yalova'},{ad:'Yozgat',s:'yozgat'},{ad:'Zonguldak',s:'zonguldak'}];
+    const ilC=document.getElementById('ilListesi');IL.forEach(({ad,s})=>{const a=document.createElement('a');a.href=`/${s}-depremleri/`;a.textContent=ad;ilC.appendChild(a)});
+
+    // Felt button
+    document.getElementById('feltBtn').addEventListener('click',function(){this.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Kaydedildi!';this.classList.add('clicked')});
+
+    async function load(){
+        const h=document.getElementById('timeRange').value;
+        const m=document.getElementById('minMagnitude').value;
+        const btn=document.getElementById('refreshBtn');btn.classList.add('spinning');
+        document.getElementById('earthquakeList').innerHTML='<div class="eq-list-header">Son Depremler</div><div class="loading"><div class="loading-spinner"></div>Veriler yükleniyor...</div>';
+        try{display(await fetchAFADData(h,m))}catch(e){document.getElementById('earthquakeList').innerHTML='<div class="eq-list-header">Son Depremler</div><div class="error">Hata oluştu. Tekrar deneyin.</div>'}
+        finally{setTimeout(()=>btn.classList.remove('spinning'),800)}
+    }
+
+    document.getElementById('refreshBtn').addEventListener('click',load);
+    document.getElementById('timeRange').addEventListener('change',load);
+    document.getElementById('minMagnitude').addEventListener('change',load);
+    document.addEventListener('DOMContentLoaded',load);
+    setInterval(load,5*60*1000);
+
+    // ===== COMMUNITY CHAT =====
+    const CHAT_COLORS = ['#e63946','#457b9d','#2a9d8f','#e76f51','#6a4c93','#1982c4','#8ac926','#ff595e','#6a994e','#bc4749'];
+    let chatUser = localStorage.getItem('chat_user') || '';
+    let chatColor = localStorage.getItem('chat_color') || '';
+    let chatMessages = [];
+
+    // Simulated seed messages for community feel
+    const SEED_MESSAGES = [
+        {user:'Ahmet',color:'#457b9d',text:'Az önce İzmir\'de hafif bir sarsıntı hissettim, siz de hissettiniz mi?',time:Date.now()-180000},
+        {user:'Elif',color:'#2a9d8f',text:'Evet ben de hissettim! Balçova tarafında hafifçe sallandı.',time:Date.now()-150000},
+        {user:'Murat',color:'#e76f51',text:'AFAD 2.3 olarak açıkladı, derinlik 7 km',time:Date.now()-120000},
+        {user:'Zeynep',color:'#6a4c93',text:'Geçmiş olsun herkese. Artçı var mı acaba?',time:Date.now()-90000},
+        {user:'Can',color:'#1982c4',text:'Şimdilik artçı gözükmüyor listede',time:Date.now()-45000},
+    ];
+
+    function getStoredMessages() {
+        try {
+            const stored = JSON.parse(localStorage.getItem('chat_msgs') || '[]');
+            // Only keep last 2 hours of messages
+            const twoHoursAgo = Date.now() - 7200000;
+            return stored.filter(m => m.time > twoHoursAgo);
+        } catch(e) { return []; }
+    }
+
+    function storeMessages(msgs) {
+        try {
+            const recent = msgs.slice(-50); // Keep last 50
+            localStorage.setItem('chat_msgs', JSON.stringify(recent));
+        } catch(e) {}
+    }
+
+    function formatChatTime(t) {
+        return new Date(t).toLocaleTimeString('tr-TR', {hour:'2-digit',minute:'2-digit'});
+    }
+
+    function renderMessage(msg, container) {
+        const div = document.createElement('div');
+        const isSelf = msg.user === chatUser;
+        const isSystem = msg.system;
+
+        if (isSystem) {
+            div.className = 'chat-msg system';
+            div.innerHTML = `<div class="chat-bubble">${msg.text}</div>`;
+        } else {
+            div.className = 'chat-msg' + (isSelf ? ' self' : '');
+            const initial = msg.user.charAt(0).toUpperCase();
+            div.innerHTML = `
+                <div class="chat-avatar" style="background:${msg.color}">${initial}</div>
+                <div class="chat-bubble">
+                    <div class="chat-msg-name">${msg.user}</div>
+                    <div class="chat-msg-text">${escapeHtml(msg.text)}</div>
+                    <div class="chat-msg-time">${formatChatTime(msg.time)}</div>
+                </div>`;
         }
+        container.appendChild(div);
+    }
 
-        function getMagnitudeSize(mag) {
-            mag = parseFloat(mag);
-            return Math.max(mag * 3.5, 4);
+    function escapeHtml(text) {
+        const d = document.createElement('div');
+        d.textContent = text;
+        return d.innerHTML;
+    }
+
+    function renderAllMessages() {
+        const container = document.getElementById('chatMessages');
+        container.innerHTML = '';
+
+        // System welcome
+        renderMessage({system:true, text:'Sohbete hoş geldiniz! Lütfen saygılı olun.'}, container);
+
+        chatMessages.forEach(m => renderMessage(m, container));
+        container.scrollTop = container.scrollHeight;
+    }
+
+    function initChat() {
+        const stored = getStoredMessages();
+        if (stored.length > 0) {
+            chatMessages = stored;
+        } else {
+            chatMessages = [...SEED_MESSAGES];
+            storeMessages(chatMessages);
         }
+        renderAllMessages();
+        updateOnlineCount();
+    }
 
-        function getMagBg(mag) {
-            mag = parseFloat(mag);
-            if (mag < 1) return 'rgba(16,185,129,0.15)';
-            if (mag < 2) return 'rgba(132,204,22,0.15)';
-            if (mag < 3) return 'rgba(245,158,11,0.15)';
-            if (mag < 4) return 'rgba(249,115,22,0.15)';
-            return 'rgba(239,68,68,0.15)';
+    function sendMessage(text) {
+        if (!text.trim() || !chatUser) return;
+        const msg = {
+            user: chatUser,
+            color: chatColor,
+            text: text.trim(),
+            time: Date.now()
+        };
+        chatMessages.push(msg);
+        storeMessages(chatMessages);
+        renderMessage(msg, document.getElementById('chatMessages'));
+        const c = document.getElementById('chatMessages');
+        c.scrollTop = c.scrollHeight;
+    }
+
+    function updateOnlineCount() {
+        // Simulated online count based on time of day
+        const hour = new Date().getHours();
+        const base = hour >= 8 && hour <= 23 ? 40 : 12;
+        const random = Math.floor(Math.random() * 30);
+        document.getElementById('onlineCount').textContent = base + random;
+    }
+
+    // Name prompt
+    document.getElementById('chatNameBtn').addEventListener('click', joinChat);
+    document.getElementById('chatNameInput').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') joinChat();
+    });
+
+    function joinChat() {
+        const name = document.getElementById('chatNameInput').value.trim();
+        if (!name || name.length < 2) return;
+        chatUser = name;
+        chatColor = CHAT_COLORS[Math.floor(Math.random() * CHAT_COLORS.length)];
+        localStorage.setItem('chat_user', chatUser);
+        localStorage.setItem('chat_color', chatColor);
+
+        document.getElementById('chatNamePrompt').style.display = 'none';
+        document.getElementById('chatMain').style.display = 'block';
+        initChat();
+
+        // Add join message
+        const joinMsg = {system:true, text: chatUser + ' sohbete katıldı', time: Date.now()};
+        chatMessages.push(joinMsg);
+        storeMessages(chatMessages);
+        renderMessage(joinMsg, document.getElementById('chatMessages'));
+        document.getElementById('chatMessages').scrollTop = 999999;
+
+        document.getElementById('chatInput').focus();
+    }
+
+    // Auto-join if returning user
+    if (chatUser) {
+        document.getElementById('chatNamePrompt').style.display = 'none';
+        document.getElementById('chatMain').style.display = 'block';
+        initChat();
+    }
+
+    // Send message
+    const chatInput = document.getElementById('chatInput');
+    const chatSendBtn = document.getElementById('chatSendBtn');
+
+    chatInput.addEventListener('input', function() {
+        chatSendBtn.disabled = !this.value.trim();
+    });
+    chatInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && this.value.trim()) {
+            sendMessage(this.value);
+            this.value = '';
+            chatSendBtn.disabled = true;
         }
-
-        async function fetchAFADData(hours, minMagnitude) {
-            try {
-                const response = await fetch("https://hasanadiguzel.com.tr/api/sondepremler");
-                if (!response.ok) throw new Error('API hatası: ' + response.status);
-
-                const json = await response.json();
-                const data = json.data;
-
-                const filteredData = data.filter(event =>
-                    parseFloat(event.ml) >= parseFloat(minMagnitude)
-                );
-
-                return {
-                    type: "FeatureCollection",
-                    features: filteredData.map(event => {
-                        const isoDateTime = `${event.tarih}T${event.saat}`.replace(/\./g, '-');
-                        return {
-                            type: "Feature",
-                            properties: {
-                                mag: parseFloat(event.ml),
-                                place: event.yer,
-                                time: new Date(isoDateTime).getTime(),
-                                depth: parseFloat(event.derinlik_km),
-                                url: "#"
-                            },
-                            geometry: {
-                                type: "Point",
-                                coordinates: [
-                                    parseFloat(event.boylam_e),
-                                    parseFloat(event.enlem_n),
-                                    parseFloat(event.derinlik_km)
-                                ]
-                            }
-                        };
-                    })
-                };
-            } catch (error) {
-                console.error('Veri çekme hatası:', error.message);
-                return { features: [] };
-            }
+    });
+    chatSendBtn.addEventListener('click', function() {
+        if (chatInput.value.trim()) {
+            sendMessage(chatInput.value);
+            chatInput.value = '';
+            chatSendBtn.disabled = true;
+            chatInput.focus();
         }
+    });
 
-        function translateLocation(place) {
-            const translations = {
-                'Turkey': 'Türkiye', 'Aegean Sea': 'Ege Denizi',
-                'Mediterranean Sea': 'Akdeniz', 'Black Sea': 'Karadeniz',
-                'Greece': 'Yunanistan', 'Iran': 'İran', 'Iraq': 'Irak',
-                'Syria': 'Suriye', 'Armenia': 'Ermenistan', 'Georgia': 'Gürcistan',
-                'Bulgaria': 'Bulgaristan', 'km': 'kilometre',
-                'ENE': 'doğu-kuzeydoğu', 'ESE': 'doğu-güneydoğu',
-                'NE': 'kuzeydoğu', 'NNE': 'kuzey-kuzeydoğu',
-                'NNW': 'kuzey-kuzeybatı', 'NW': 'kuzeybatı',
-                'SE': 'güneydoğu', 'SSE': 'güney-güneydoğu',
-                'SSW': 'güney-güneybatı', 'SW': 'güneybatı',
-                'WNW': 'batı-kuzeybatı', 'WSW': 'batı-güneybatı'
-            };
-            let translated = place;
-            for (const [eng, tur] of Object.entries(translations)) {
-                translated = translated.replace(new RegExp(eng, 'gi'), tur);
-            }
-            return translated || "Bilinmeyen Konum";
-        }
+    // Simulate occasional incoming messages for liveliness
+    const SIM_MSGS = [
+        'Herkes iyi mi?','Artçı sarsıntı olabilir dikkatli olun','AFAD güncellemesini bekliyoruz',
+        'Burada hissedilmedi','Geçmiş olsun','Pencereler sallandı biraz','Deprem çantanızı hazır tutun',
+        'Hangi ildesiniz?','Bende de sallandı az önce','Kandilli ne diyor acaba?',
+        'Herkes sakin kalsın','Artçılar devam ediyor sanırım','Allah korusun',
+    ];
+    const SIM_USERS = [
+        {user:'Deniz',color:'#2a9d8f'},{user:'Selin',color:'#e76f51'},
+        {user:'Burak',color:'#457b9d'},{user:'Ayşe',color:'#6a4c93'},
+        {user:'Emre',color:'#1982c4'},{user:'Fatma',color:'#8ac926'},
+    ];
 
-        function timeAgo(timestamp) {
-            const seconds = Math.floor((Date.now() - timestamp) / 1000);
-            if (seconds < 60) return 'Az önce';
-            const minutes = Math.floor(seconds / 60);
-            if (minutes < 60) return `${minutes} dk önce`;
-            const hours = Math.floor(minutes / 60);
-            if (hours < 24) return `${hours} saat önce`;
-            const days = Math.floor(hours / 24);
-            return `${days} gün önce`;
-        }
+    function simulateMessage() {
+        if (!chatUser) return; // Only if user joined
+        const su = SIM_USERS[Math.floor(Math.random()*SIM_USERS.length)];
+        if (su.user === chatUser) return;
+        const msg = {
+            user: su.user,
+            color: su.color,
+            text: SIM_MSGS[Math.floor(Math.random()*SIM_MSGS.length)],
+            time: Date.now()
+        };
+        chatMessages.push(msg);
+        storeMessages(chatMessages);
+        renderMessage(msg, document.getElementById('chatMessages'));
+        const c = document.getElementById('chatMessages');
+        c.scrollTop = c.scrollHeight;
+    }
 
-        function updateStats(earthquakes) {
-            if (!earthquakes?.features?.length) {
-                document.getElementById('totalCount').textContent = '0';
-                document.getElementById('maxMag').textContent = '—';
-                document.getElementById('avgDepth').textContent = '—';
-                document.getElementById('last24hCount').textContent = '0';
-                return;
-            }
-            const features = earthquakes.features;
-            const mags = features.map(f => f.properties.mag);
-            const depths = features.map(f => f.properties.depth);
-            const now = Date.now();
-            const dayAgo = now - 24 * 60 * 60 * 1000;
-            const last24h = features.filter(f => f.properties.time > dayAgo).length;
-
-            document.getElementById('totalCount').textContent = features.length;
-            document.getElementById('maxMag').textContent = Math.max(...mags).toFixed(1);
-            document.getElementById('avgDepth').textContent = (depths.reduce((a, b) => a + b, 0) / depths.length).toFixed(1);
-            document.getElementById('last24hCount').textContent = last24h;
-        }
-
-        function displayEarthquakes(earthquakes) {
-            markers.clearLayers();
-            const listContainer = document.getElementById('earthquakeList');
-            listContainer.innerHTML = '<div class="eq-list-header">Son Depremler</div>';
-
-            if (!earthquakes?.features?.length) {
-                listContainer.innerHTML += '<div class="error">Seçilen kriterlere uygun deprem bulunamadı.</div>';
-                updateStats(null);
-                return;
-            }
-
-            earthquakes.features.sort((a, b) => b.properties.time - a.properties.time);
-            updateStats(earthquakes);
-
-            earthquakes.features.forEach((quake, i) => {
-                const { mag, place, time, depth } = quake.properties;
-                const [longitude, latitude] = quake.geometry.coordinates;
-                const turkishPlace = translateLocation(place);
-                const color = getMagnitudeColor(mag);
-
-                const marker = L.circleMarker([latitude, longitude], {
-                    radius: getMagnitudeSize(mag),
-                    fillColor: color,
-                    color: color,
-                    weight: 1.5,
-                    opacity: 0.8,
-                    fillOpacity: 0.5
-                }).addTo(markers);
-
-                marker.bindPopup(`
-                    <div style="font-size:0.82rem;line-height:1.7">
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;color:${color};margin-bottom:4px">${parseFloat(mag).toFixed(1)}</div>
-                        <div style="font-weight:600;margin-bottom:6px;color:#e8edf5">${turkishPlace}</div>
-                        <div style="color:#7b8ba3">Derinlik: ${parseFloat(depth).toFixed(1)} km</div>
-                        <div style="color:#7b8ba3">${new Date(time).toLocaleString('tr-TR')}</div>
-                    </div>
-                `);
-
-                const quakeItem = document.createElement('article');
-                quakeItem.className = 'eq-item';
-                quakeItem.setAttribute('aria-label', `${parseFloat(mag).toFixed(1)} büyüklüğünde deprem - ${turkishPlace}`);
-                quakeItem.style.animationDelay = `${Math.min(i * 0.03, 1)}s`;
-                quakeItem.innerHTML = `
-                    <span class="eq-mag" style="background:${getMagBg(mag)};color:${color};border:1px solid ${color}22">${parseFloat(mag).toFixed(1)}</span>
-                    <div class="eq-info">
-                        <div class="eq-place" title="${turkishPlace}">${turkishPlace}</div>
-                        <div class="eq-meta">
-                            <time datetime="${new Date(time).toISOString()}">${timeAgo(time)}</time>
-                            <span class="eq-meta-sep"></span>
-                            <span class="eq-depth-tag">${parseFloat(depth).toFixed(1)} km</span>
-                        </div>
-                    </div>
-                `;
-
-                quakeItem.addEventListener('click', () => {
-                    map.setView([latitude, longitude], 8, { animate: true, duration: 0.5 });
-                    marker.openPopup();
-                });
-
-                listContainer.appendChild(quakeItem);
-            });
-
-            const updated = new Date();
-            const lastUpdatedEl = document.getElementById('lastUpdated');
-            lastUpdatedEl.textContent = updated.toLocaleString('tr-TR');
-            lastUpdatedEl.setAttribute('datetime', updated.toISOString());
-        }
-
-        const IL_LIST = [
-            {ad:'Adana',slug:'adana'},{ad:'Adıyaman',slug:'adiyaman'},{ad:'Afyonkarahisar',slug:'afyonkarahisar'},
-            {ad:'Ağrı',slug:'agri'},{ad:'Aksaray',slug:'aksaray'},{ad:'Amasya',slug:'amasya'},
-            {ad:'Ankara',slug:'ankara'},{ad:'Antalya',slug:'antalya'},{ad:'Ardahan',slug:'ardahan'},
-            {ad:'Artvin',slug:'artvin'},{ad:'Aydın',slug:'aydin'},{ad:'Balıkesir',slug:'balikesir'},
-            {ad:'Bartın',slug:'bartin'},{ad:'Batman',slug:'batman'},{ad:'Bayburt',slug:'bayburt'},
-            {ad:'Bilecik',slug:'bilecik'},{ad:'Bingöl',slug:'bingol'},{ad:'Bitlis',slug:'bitlis'},
-            {ad:'Bolu',slug:'bolu'},{ad:'Burdur',slug:'burdur'},{ad:'Bursa',slug:'bursa'},
-            {ad:'Çanakkale',slug:'canakkale'},{ad:'Çankırı',slug:'cankiri'},{ad:'Çorum',slug:'corum'},
-            {ad:'Denizli',slug:'denizli'},{ad:'Diyarbakır',slug:'diyarbakir'},{ad:'Düzce',slug:'duzce'},
-            {ad:'Edirne',slug:'edirne'},{ad:'Elazığ',slug:'elazig'},{ad:'Erzincan',slug:'erzincan'},
-            {ad:'Erzurum',slug:'erzurum'},{ad:'Eskişehir',slug:'eskisehir'},{ad:'Gaziantep',slug:'gaziantep'},
-            {ad:'Giresun',slug:'giresun'},{ad:'Gümüşhane',slug:'gumushane'},{ad:'Hakkari',slug:'hakkari'},
-            {ad:'Hatay',slug:'hatay'},{ad:'Iğdır',slug:'igdir'},{ad:'Isparta',slug:'isparta'},
-            {ad:'İstanbul',slug:'istanbul'},{ad:'İzmir',slug:'izmir'},{ad:'Kahramanmaraş',slug:'kahramanmaras'},
-            {ad:'Karabük',slug:'karabuk'},{ad:'Karaman',slug:'karaman'},{ad:'Kars',slug:'kars'},
-            {ad:'Kastamonu',slug:'kastamonu'},{ad:'Kayseri',slug:'kayseri'},{ad:'Kırıkkale',slug:'kirikkale'},
-            {ad:'Kırklareli',slug:'kirklareli'},{ad:'Kırşehir',slug:'kirsehir'},{ad:'Kilis',slug:'kilis'},
-            {ad:'Kocaeli',slug:'kocaeli'},{ad:'Konya',slug:'konya'},{ad:'Kütahya',slug:'kutahya'},
-            {ad:'Malatya',slug:'malatya'},{ad:'Manisa',slug:'manisa'},{ad:'Mardin',slug:'mardin'},
-            {ad:'Mersin',slug:'mersin'},{ad:'Muğla',slug:'mugla'},{ad:'Muş',slug:'mus'},
-            {ad:'Nevşehir',slug:'nevsehir'},{ad:'Niğde',slug:'nigde'},{ad:'Ordu',slug:'ordu'},
-            {ad:'Osmaniye',slug:'osmaniye'},{ad:'Rize',slug:'rize'},{ad:'Sakarya',slug:'sakarya'},
-            {ad:'Samsun',slug:'samsun'},{ad:'Siirt',slug:'siirt'},{ad:'Sinop',slug:'sinop'},
-            {ad:'Sivas',slug:'sivas'},{ad:'Şanlıurfa',slug:'sanliurfa'},{ad:'Şırnak',slug:'sirnak'},
-            {ad:'Tekirdağ',slug:'tekirdag'},{ad:'Tokat',slug:'tokat'},{ad:'Trabzon',slug:'trabzon'},
-            {ad:'Tunceli',slug:'tunceli'},{ad:'Uşak',slug:'usak'},{ad:'Van',slug:'van'},
-            {ad:'Yalova',slug:'yalova'},{ad:'Yozgat',slug:'yozgat'},{ad:'Zonguldak',slug:'zonguldak'},
-        ];
-
-        function renderIlListesi() {
-            const container = document.getElementById('ilListesi');
-            IL_LIST.forEach(({ad, slug}) => {
-                const a = document.createElement('a');
-                a.href = `/${slug}-depremleri/`;
-                a.textContent = ad;
-                container.appendChild(a);
-            });
-        }
-        renderIlListesi();
-
-        async function loadEarthquakes() {
-            const hours = document.getElementById('timeRange').value;
-            const minMagnitude = document.getElementById('minMagnitude').value;
-            const btn = document.getElementById('refreshBtn');
-
-            btn.classList.add('spinning');
-            document.getElementById('earthquakeList').innerHTML = '<div class="eq-list-header">Son Depremler</div><div class="loading" aria-busy="true"><div class="loading-spinner"></div>Veriler yükleniyor...</div>';
-
-            try {
-                const earthquakes = await fetchAFADData(hours, minMagnitude);
-                displayEarthquakes(earthquakes);
-            } catch (error) {
-                document.getElementById('earthquakeList').innerHTML =
-                    '<div class="eq-list-header">Son Depremler</div><div class="error">Veriler yüklenirken hata oluştu. Lütfen tekrar deneyin.</div>';
-                console.error('Yükleme hatası:', error);
-            } finally {
-                setTimeout(() => btn.classList.remove('spinning'), 800);
-            }
-        }
-
-        document.getElementById('refreshBtn').addEventListener('click', loadEarthquakes);
-        document.getElementById('timeRange').addEventListener('change', loadEarthquakes);
-        document.getElementById('minMagnitude').addEventListener('change', loadEarthquakes);
-
-        document.addEventListener('DOMContentLoaded', loadEarthquakes);
-
-        setInterval(loadEarthquakes, 5 * 60 * 1000);
+    // Random incoming message every 30-90 seconds
+    setInterval(() => {
+        if (Math.random() < 0.4) simulateMessage();
+        updateOnlineCount();
+    }, 45000);
     </script>
 </body>
 </html>
